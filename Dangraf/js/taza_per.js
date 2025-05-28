@@ -1,7 +1,7 @@
 function toggleMenu() {
-        document.querySelector('.navegar').classList.toggle('active');
-        document.querySelector('.ico').classList.toggle('active');
-    };
+    document.querySelector('.navegar').classList.toggle('active');
+    document.querySelector('.ico').classList.toggle('active');
+};
 
 function displayimg(caja) {
 	let cambiacolor = [
@@ -69,4 +69,10 @@ function eliminarCarrito() {
         setTimeout(() => {
             mensaje.classList.remove('mostrar');
         }, 2500);
+};
+
+function cambiarContador(valor) {
+    contador += valor;
+    if (contador < 0) contador = 0;
+    document.getElementById('contador').textContent = contador;
 };
