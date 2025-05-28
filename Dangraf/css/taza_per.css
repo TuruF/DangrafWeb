@@ -1,0 +1,249 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Sansita", sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+* h3 {
+	font-family: "Bebas Neue", sans-serif;
+	font-size: 30px;
+}
+
+html, body {
+	background-color: #FFF6EE;
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+	background-color: #48CAE4;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0 5px 50px;
+}
+
+.menu {
+	align-self:flex-end; /*Alinea un elemento flex a lo largo del eje tranversal, anulando el valor de align-items*/
+}
+
+nav {
+	display: flex;
+	align-items: center;
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+	padding: 10px;
+	transition: all 0.3s;
+	display: inline-flex;
+    align-items: center;
+}
+
+nav a:hover {
+	background-color: #0096C7;
+	border-radius: 5px;
+}
+
+.banner img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.navegar {
+	margin-right: 100px;
+}
+
+.ico {
+	padding-right: 20px;
+}
+
+.contador {
+    display: none;
+    position: absolute;
+    top: -6px;
+    left: 22px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+button {
+	position: relative;
+    border-radius: 50%;
+	padding: 10px;
+	margin-right: 10px;
+	display: inline-flex;
+	align-items: center;
+	border: 2px solid #03045E;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #0096C7;
+}
+
+.container {
+    display: flex;
+	justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 70%;
+	min-height: 100%;
+}
+
+.galeria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 10px;
+}
+
+.muestra {
+    width: 550px;
+    height: 550px;
+    text-align: center;
+    background-image: url("../img/madera.jpg");
+	background-size: cover;
+	border-radius: 10px;
+    padding: 10px;
+}
+
+.color {
+    display: inline-flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+.texto {
+    background-color: #90E0EF;
+    flex: 1;
+    padding: 20px;
+    text-align: justify;
+    border-radius: 8px;
+}
+
+.carrito {
+    background-color: #023E8A;
+	text-align: center;
+	border-radius: 5px;
+	border: 2px solid #023E8A;
+	color: white;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.carrito:hover {
+	background-color: #0096C7;
+	color: black;
+}
+
+.azul {
+    background-color: #03045E;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.rojo {
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.amarillo {
+    background-color: yellow;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.rosa {
+    background-color: rosybrown;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.verde {
+    background-color: green;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.negro {
+    background-color: orange;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.activo {
+    border: 2px solid black;
+}
+
+.mensaje {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF6EE;
+    color: black;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.mensaje.mostrar {
+    opacity: 1;
+}
+
+footer {
+	background-color: #48CAE4;
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+footer a {
+	text-decoration: none;
+	color: black;
+}

@@ -1,0 +1,271 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Sansita", sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+body {
+	background-color: #FFF6EE;
+	height: 100%;
+	display: flex;
+    flex-direction: column;
+}
+
+header {
+	background-color: #48CAE4;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0 5px 50px;
+}
+
+.menu {
+	align-self:flex-end; /*Alinea un elemento flex a lo largo del eje tranversal, anulando el valor de align-items*/
+}
+
+nav {
+	display: flex;
+	align-items: center;
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+	padding: 10px;
+	transition: all 0.3s;
+	display: inline-flex;
+    align-items: center;
+}
+
+nav a:hover {
+	background-color: #0096C7;
+	border-radius: 5px;
+}
+
+.banner img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.navegar {
+	margin-right: 100px;
+}
+
+.ico {
+	padding-right: 20px;
+}
+
+.icon {
+	border-radius: 50%;
+	padding: 10px;
+	margin-right: 10px;
+	display: inline-flex;
+	align-items: center;
+	border: 2px solid #023E8A;
+	cursor: pointer;
+}
+
+.icon:hover {
+	background-color: #0096C7;
+	color: black;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+aside {
+	width: 15%;
+	height: 500px;
+	background-color: #90E0EF;
+	padding: 10px;
+	margin: 20px;
+	border-radius: 5px;
+	display: block;
+	justify-content: center;
+	align-content: center;
+	text-align: center;
+}
+
+.plazo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Espacio entre imagen y texto */
+  text-align: center;
+}
+
+.subir_doc {
+	width: 100%;
+	height: 50px;
+	background-color: #023E8A;
+	background-image: url("../img/vector.png");
+	background-repeat: no-repeat;
+	background-position: 10px center;/*primer elemento para mover horizontalmente y el segundo elemento en la vertical*/
+	text-align: center;
+  	line-height: 0px; /* Centra el texto verticalmente */
+	border-radius: 5px;
+	border: 2px solid #023E8A;
+	color: white;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+.subir_doc:hover {
+	background-color: #0096C7;
+	background-image: url("../img/subir-archivo.png");
+	color: black;
+}
+
+main {
+	flex: 1;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+}
+
+main img {
+	height: 100%;
+	max-height: 300px;
+	border-radius: 5px;
+}
+
+.section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	text-align: justify;
+	padding: 20px 10px;
+	background-color: rgb(144, 224, 239, 0.3);
+	border-radius: 5px;
+	margin: 10px;
+}
+
+.section img {
+	display: block;
+	margin: 0 auto 20px; /* margen inferior para separar la imagen del texto */
+}
+
+footer {
+	background-color: #48CAE4;
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+footer a {
+	text-decoration: none;
+	color: black;
+}
+
+/*Móvil*/
+@media (max-width: 450px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .navegar, .ico {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+		margin-top: 10px;
+    }
+
+    .hamburger {
+        display: block;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+
+    .navegar.active, .ico.active {
+        display: block;
+    }
+
+    .navegar a {
+        padding: 15px;
+        width: 100%;
+        border-top: 1px solid #ccc;
+        background-color: #90E0EF;
+    }
+	
+	aside {
+        flex: 1;
+    }
+
+    main {
+		grid-template-columns: 1fr;
+    }
+}
+
+/*Tablet*/
+@media (min-width: 451px) and (max-width: 1024px) {
+	header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .navegar, .ico {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+		margin-top: 10px;
+    }
+
+    .hamburger {
+        display: block;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+
+    .navegar.active, .ico.active {
+        display: block;
+    }
+
+    .navegar a {
+        padding: 15px;
+        width: 100%;
+        border-top: 1px solid #ccc;
+        background-color: #90E0EF;
+    }
+	
+	aside {
+        flex: 1;
+    }
+
+    main {
+		grid-template-columns: 1fr;
+    }
+}

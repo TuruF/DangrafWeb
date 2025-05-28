@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dangraf</title>
+	<link rel="icon" href="img/logo4.png">
+	<link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/index.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<header>
+		<div class="banner">
+			<img src="img/banner.png" alt="Banner">
+		</div>
+		
+		<div class="menu">
+			<nav>
+				<button class="hamburger" onclick="toggleMenu()">☰</button>
+				<div class="navegar">
+					<a href="#">Inicio</a>
+					<a href="../Dangraf/html/print.html">Impresión</a>
+					<a href="../Dangraf/html/tienda.html">Tienda</a>
+					<a href="../Dangraf/html/regalo.html">Regalos personalizados</a>
+					<a href="../Dangraf/html/contacto.html">Contacto</a>
+				</div>
+				<div class="ico">
+					<button type="button" class="icon"><img src="img/carrito.png" alt="Cesta"></button>
+					<button type="button" class="icon" onclick="location.href='../Dangraf/html/login.html'"><img src="img/usuario.png" alt="Usuario"></button>
+				</div>
+			</nav>
+		</div>
+	</header>
+	
+	<div class="container">
+		<aside>
+			<p>Tu copistería de confianza</p><br>
+			<p>imprime online desde 0,08€ en blanco y negro y 0,35€ en color usando el código <b>DNGF</b> en tu carrito.</p><br>
+			<form action="#" method="post" enctype="multipart/form-data">
+				<input type="file" name="documento" accept="application/pdf" id="inputDocumento" style="display: none;" />
+				<button class="subir_doc" onclick="document.getElementById('inputDocumento').click();"><p>Subir documentos</p></button>
+			</form>
+			<p>Envío gratuito a partir de 30€, y si no llegas al mínimo no desesperes que las tarifas más bajas están aseguradas.</p><br>
+			<p class="plazo"><img src="img/envio.png" alt="envio">Plazo de envío 24/48h</p><br>
+		</aside>
+
+		<main>
+			<div class="section">
+				<img src="img/1.jpg" alt="Impresión">
+				<p>En Dangraf, creemos que cada copia cuenta. Desde nuestros inicios, nos hemos dedicado a ofrecer un servicio rápido, confiable y de calidad para estudiantes, profesionales, empresas y particulares que buscan soluciones de impresión y copiado adaptadas a sus necesidades.</p>
+				<p>Nos apasiona el papel. Por eso, además de copias e impresiones, también ofrecemos encuadernaciones y una atención personalizada que marca la diferencia.</p>
+				<p>Contamos con equipos de última generación y un equipo humano dispuesto a ayudarte en cada paso. Ya sea que necesites un trabajo urgente o quieras preparar una presentación impecable, estamos aquí para facilitarte el camino.</p>
+			</div>
+			<div class="section">
+				<img src="img/tienda1.jpg" alt="Tienda">
+				<p>En nuestra zona de tienda, encontrarás todo lo que necesitas para complementar tus trabajos impresos y facilitar tus estudios, proyectos o tareas de oficina. Porque no solo imprimimos, ¡también te equipamos con lo esencial!</p>
+			</div>
+			<div class="section">
+				<img src="img/personalizar.jpg" alt="Personalización">
+				<p>En nuestra copistería no solo imprimimos, ¡hacemos que tus ideas cobren vida! Personaliza una amplia variedad de artículos con tus diseños, fotos, frases favoritas o el logo de tu empresa. Perfecto para regalos, eventos, promociones o simplemente para expresar tu estilo.</p>
+			</div>
+			<div class="section">
+				<img src="img/2.jpg" alt="Contacto">
+				<p>¿Tienes alguna duda, necesitas un presupuesto personalizado o quieres hacer un pedido?</p>
+				<p>¡Estamos aquí para ayudarte! Ponte en contacto con nosotros a través de cualquiera de nuestras vías.</p>
+			</div>
+		</main>
+	</div>
+	
+	<footer>
+		<p>&copy; 2025 Dangraf | Todos los derechos reservados | <a href="../html/datos.html" target="_blank">Política de privacidad</a> | <a href="../html/aviso.html" target="_blank">Aviso legal</a></p>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Impresión</title>
+	<link rel="icon" href="../img/logo4.png">
+	<link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/print.css">
+</head>
+
+<body>
+	<header>
+		<div class="banner">
+			<img src="../img/banner.png" alt="Banner">
+		</div>
+		
+		<div class="menu">
+			<nav>
+				<button class="hamburger" onclick="toggleMenu()">☰</button>
+				<div class="navegar">
+					<a href="../index.html">Inicio</a>
+					<a href="#">Impresión</a>
+					<a href="../html/tienda.html">Tienda</a>
+					<a href="../html/regalo.html">Regalos personalizados</a>
+					<a href="../html/contacto.html">Contacto</a>
+				</div>
+				<div class="ico">
+					<button type="button" class="icon"><img src="../img/carrito.png" alt="Cesta"></button>
+					<button type="button" class="icon" onclick="location.href='../html/login.html'"><img src="../img/usuario.png" alt="Usuario"></button>
+				</div>
+			</nav>
+		</div>
+	</header>
+	
+	<section class="container">
+		<div class="formulario">
+			<p>Número de copias<span id="contador">0</span><img src="../img/menos.png" alt="menos" class="info" onclick="cambiarContador(-1)"><img src="../img/mas.png" alt="mas" class="info" onclick="cambiarContador(+1)"></p><hr>
+			<p>Color de impresión <img src="../img/informacion.png" alt="info" class="info1"></p>
+			<a href="#contacto" class="btn">Blanco y negro</br>Escala de grises</a>
+			<a href="#contacto" class="btn">Color</br>Formato CMYK</a><hr>
+			
+			<div id="color" class="ventana">
+				<div class="ventana-content">
+					<span class="close" onclick="cerrarColor()">&times;</span>
+					<div class="texto">
+						<p>Blanco y negro</p>
+						<p>Se imprimirá con tóner negro en escala de grises</p><br>
+						<p>Full color</p>
+						<p>Se imprimirá con tintas de alta calidad en CMYK</p>
+						<p>(Cian, magenta, amarillo y negro)</p>
+					</div>
+				</div>
+			</div>
+
+			<p>Tamaño del papel <img src="../img/informacion.png" alt="info" class="info2"></p>
+			<a href="#contacto" class="btn">A5</br>14.8 x 21cm</a>
+			<a href="#contacto" class="btn">A4</br>21 x 29.7cm</a>
+			<a href="#contacto" class="btn">A3</br>29.7 x 42cm</a><hr>
+		  
+			<div id="tamano" class="ventana">
+				<div class="ventana-content">
+					<span class="close" onclick="cerrarTamano()">&times;</span>
+					<div class="contenido-tamano">
+						<img src="../img/tamanho.png" alt="tamaño" class="tamano">
+						<div class="texto">
+							<p>A3: 29.7 x 42cm Doble de un folio</p>
+							<p>A4: 21 x 29.7cm Folio de toda la vida</p>
+							<p>A5: 14.8 x 21cm Mitad de un folio</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<p>Grosor del papel</p>
+			<a href="#contacto" class="btn">80gr</br>Folio de siempre</a>
+			<a href="#contacto" class="btn">100gr</br>Un poco más grueso</a>
+			<a href="#contacto" class="btn">160gr</br>Ni fino ni grueso</a>
+			<a href="#contacto" class="btn">200gr</br>Tipo cartulina fina</a>
+			<a href="#contacto" class="btn">300gr</br>Cartulina del cole</a><hr>
+		  
+			<p>Forma de impresión</p>
+			<a href="#contacto" class="btn">Una cara</br>Impreso por una cara del folio</a>
+			<a href="#contacto" class="btn">Doble cara</br>Impreso por delante y por detrás del folio</a>
+		</div>
+		<div class="formulario">
+			<p>Orientación del folio <img src="../img/informacion.png" alt="info" class="info3"></p>
+			<a href="#contacto" class="btn">Vertical</a>
+			<a href="#contacto" class="btn">Horizontal</a><hr>
+			
+			<div id="orientacion" class="ventana">
+				<div class="ventana-content">
+					<span class="close" onclick="cerrarOrientacion()">&times;</span>
+					<div class="contenido-tamano">
+						<img src="../img/vertical.png" alt="vertical" class="vertical">
+						<p>Vertical</p>
+						<img src="../img/horizontal.png" alt="horizontal" class="orientacion">
+						<p>Horizontal</p>
+					</div><hr>
+					<div class="contenido-tamano">
+						<img src="../img/orientacion.png" alt="orientacion" class="orientacion">
+						<div class="texto">
+							<p>¿Y si tengo cosas en horizontal y en vertical mezcladas dentro del PDF?</p>
+							<p>Si tu documento está en vertical y tienes otros recuersos en horizontal dentro del documento respetamos su orientación</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<p>Página por cara</p>
+			<a href="#contacto" class="btn"><img src="../img/1pag1.png" alt="uno" class="cara"> Una página por cara</a>
+			<a href="#contacto" class="btn"><img src="../img/2pag1.png" alt="dos" class="cara"> Dos páginas por cara</a>
+			<a href="#contacto" class="btn"><img src="../img/4pag1.png" alt="cuatro" class="cara"> Cuatro páginas por cara</a><hr>
+		  
+			<p>Paso de página</p>
+			<a href="#contacto" class="btn"><img src="../img/pasarh.png" alt="uno" class="cara">De izquierda a derecha</a>
+			<a href="#contacto" class="btn"><img src="../img/pasarv.png" alt="uno" class="cara">De abajo a arriba</a><hr>
+
+			<p>Tipos de encuadernación <img src="../img/informacion.png" alt="info" class="info4"></p>
+			<a href="#contacto" class="fin"><img src="../img/hoja.png" alt="uno" class="cara">Sin acabado</br>Hojas sueltas</a>
+			<a href="#contacto" class="fin"><img src="../img/nota.png" alt="uno" class="cara">Encuadernado</br>Espiral y tapas</a><hr>
+
+			<div id="encuadernado" class="ventana">
+				<div class="ventana-content">
+					<span class="close" onclick="cerrarEncuadernado()">&times;</span>
+					<p>Para el grosor de 80gr el máximo son 400 folios por encuadernación, en caso de superarlos se crearás tantas encuadernaciones como sean necesarias.</p>
+				</div>
+			</div>
+
+			<p>Otros acabados</p>
+			<a href="#contacto" class="fin"><img src="../img/2agub.png" alt="uno" class="cara">Perforado</br>Dos agujeros</a>
+			<a href="#contacto" class="fin"><img src="../img/4agub.png" alt="uno" class="cara">Perforado</br>Cuatro agujeros</a>
+		</div>
+	</section>
+
+	<footer>
+		<p>&copy; 2025 Dangraf | Todos los derechos reservados | <a href="../html/datos.html" target="_blank">Política de privacidad</a> | <a href="../html/aviso.html" target="_blank">Aviso legal</a></p>
+	</footer>
+
+	<script src="../js/print.js" type="text/javascript"></script>
+</body>
+</html>

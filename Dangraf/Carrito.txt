@@ -1,0 +1,160 @@
+1. HTML para la vista del carrito
+Primero, necesitas crear un contenedor para el carrito en tu HTML, que puede estar en un lugar visible en la página o en una sección de "Carrito".
+
+Aquí te dejo un ejemplo básico de cómo podrías estructurarlo:
+
+<!-- Vista del Carrito -->
+<div id="carrito-vista" class="carrito-vista">
+    <h2>Carrito de Compras</h2>
+    <div id="productos-carrito">
+        <!-- Los productos del carrito se agregarán aquí con JS -->
+    </div>
+    <div id="total-carrito">
+        <!-- El total se mostrará aquí -->
+    </div>
+    <button onclick="vaciarCarrito()">Vaciar carrito</button>
+</div>
+
+2. CSS para la vista del carrito
+Para que el carrito tenga un aspecto más atractivo, puedes agregar algo de CSS para estilizarlo:
+
+.carrito-vista {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#productos-carrito {
+    margin-bottom: 20px;
+}
+
+#productos-carrito div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#total-carrito {
+    font-weight: bold;
+    text-align: right;
+    margin-top: 10px;
+}
+
+button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+3. JavaScript para mostrar el carrito
+Ahora, agregamos el código JavaScript para mostrar los productos en el carrito. Este código recupera los productos desde el localStorage, los muestra en la página y actualiza el precio total.
+
+// Recuperamos el carrito desde localStorage o iniciamos un array vacío
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+// Función para agregar productos al carrito
+function agregarAlCarrito() {
+    const producto = {
+        nombre: "Taza personalizada",
+        precio: 12.99
+    };
+
+    carrito.push(producto);
+
+    // Guardamos el carrito actualizado en localStorage
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    console.log("Producto añadido al carrito:", producto);
+    console.log("Carrito actual:", carrito);
+
+    alert("¡Producto añadido al carrito!");
+    mostrarCarrito();  // Actualizamos la vista del carrito inmediatamente
+}
+
+// Función para mostrar los productos en el carrito
+function mostrarCarrito() {
+    const productosCarrito = document.getElementById("productos-carrito");
+    productosCarrito.innerHTML = "";  // Limpiamos el contenido actual
+
+    // Si el carrito está vacío, mostramos un mensaje
+    if (carrito.length === 0) {
+        productosCarrito.innerHTML = "<p>No hay productos en el carrito.</p>";
+    } else {
+        // Creamos los elementos del carrito
+        carrito.forEach((producto, index) => {
+            const divProducto = document.createElement("div");
+            divProducto.innerHTML = `
+                <span>${producto.nombre}</span>
+                <span>$${producto.precio.toFixed(2)}</span>
+            `;
+            productosCarrito.appendChild(divProducto);
+        });
+    }
+
+    // Mostrar el total
+    const totalCarrito = document.getElementById("total-carrito");
+    const total = carrito.reduce((acc, producto) => acc + producto.precio, 0);
+    totalCarrito.innerHTML = `Total: $${total.toFixed(2)}`;
+}
+
+// Función para vaciar el carrito
+function vaciarCarrito() {
+    carrito = [];
+    localStorage.setItem("carrito", JSON.stringify(carrito));  // Limpiamos el carrito en localStorage
+    mostrarCarrito();  // Actualizamos la vista del carrito
+}
+
+// Llamamos a mostrarCarrito cuando la página se carga para actualizar la vista
+window.onload = mostrarCarrito;
+
+4. Actualizar el HTML para incluir la vista del carrito en un lugar visible
+Si quieres que el carrito sea visible en tu página (por ejemplo, en el menú de navegación), puedes agregar un enlace al carrito:
+
+<a href="#" onclick="mostrarCarrito()">Ver Carrito</a>
+Este enlace abriría el popup o sección del carrito donde se muestran los productos agregados.
+
+Explicación del código:
+Agregar producto al carrito: Cuando el usuario hace clic en "Añadir al carrito", la función agregarAlCarrito() agrega un nuevo producto al carrito y lo guarda en localStorage.
+
+Mostrar productos en el carrito: La función mostrarCarrito() recupera los productos del carrito desde localStorage, los muestra en la página y calcula el total.
+
+Vaciar carrito: La función vaciarCarrito() vacía el carrito y actualiza la vista.
+
+5. Mejora con un contador de productos en el carrito
+Si deseas mostrar un contador de productos en el carrito, puedes agregar algo como esto al final de la función mostrarCarrito():
+
+// Función para mostrar el número de productos en el carrito
+function actualizarContadorCarrito() {
+    const contador = document.getElementById("contador-carrito");
+    contador.textContent = carrito.length;  // Actualizamos el contador con el número de productos
+}
+
+// Llamar a esta función cada vez que el carrito cambie
+function agregarAlCarrito() {
+    // ... Código de agregar al carrito ...
+    actualizarContadorCarrito();  // Actualizamos el contador de productos
+}
+
+function vaciarCarrito() {
+    // ... Código para vaciar el carrito ...
+    actualizarContadorCarrito();  // Actualizamos el contador de productos
+}
+Y en tu HTML, agregas el contador:
+
+<span id="contador-carrito">0</span> Productos
+
+Con estos cambios, ya tienes un carrito funcional que agrega productos, muestra el total y te permite vaciarlo. ¿Te gustaría añadir alguna otra funcionalidad o mejorar algo en particular? 
+

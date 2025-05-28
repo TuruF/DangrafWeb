@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tienda</title>
+	<link rel="icon" href="../img/logo4.png">
+	<link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/shop.css">
+</head>
+
+<body>
+	<header>
+		<div class="banner">
+			<img src="../img/banner.png" alt="Banner">
+		</div>
+		
+		<div class="menu">
+			<nav>
+				<button class="hamburger" onclick="toggleMenu()">☰</button>
+				<div class="navegar">
+					<a href="../index.html">Inicio</a> 
+					<a href="../html/print.html">Impresión</a>
+					<a href="#">Tienda</a>
+					<a href="../html/regalo.html">Regalos personalizados</a>
+					<a href="../html/contacto.html">Contacto</a>
+				</div>
+				<div class="ico">
+					<button type="button" class="icon"><img src="../img/carrito.png" alt="Cesta"></button>
+					<button type="button" class="icon" onclick="location.href='../html/login.html'"><img src="../img/usuario.png" alt="Usuario"></button>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<div class="container">
+		<!--<aside>
+			<h1>Productos</h1>
+			<ul>
+				<li>Cuadernos</li>
+				<li>Lápices</li>
+				<li>Bolígrafos</li>
+				<li>Gomas de borrar</li>
+				<li>Agendas</li>
+				<li>Tijeras</li>
+				<li>Sacapuntas</li>
+				<li>Marcapáginas</li>
+				<li>Postits</li>
+				<li>Rotuladores</li>
+				<li>Subrayadores</li>
+				<li>Archivadores</li>
+			</ul>
+		</aside>-->
+		<main>
+			<div class="foto">
+				<div class="item">
+					<img src="../img/cuaderno.png" alt="Cuaderno">
+					<p>Cuaderno A4</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+				<div class="item">
+					<img src="../img/archivador1.png" alt="Archivador">
+					<p>Archivador</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+				<div class="item">
+					<img src="../img/postit1.png" alt="Postit">
+					<p>Postit</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+				<div class="item">
+					<img src="../img/marcador1.png" alt="Marcador">
+					<p>Marcadores</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+				<div class="item">
+					<img src="../img/bolis.png" alt="Bolígrafo">
+					<p>Bolígrafo</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+				<div class="item">
+					<img src="../img/lapiz1.png" alt="Lápiz">
+					<p>Lápiz</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+				<div class="item">
+					<img src="../img/gomas.png" alt="Goma">
+					<p>Goma</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+				<div class="item">
+					<img src="../img/sacapuntas.png" alt="Sacapuntas">
+					<p>Sacapuntas</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+				<div class="item">
+					<img src="../img/tijerasg.png" alt="Tijeras">
+					<p>Tijeras</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+				<div class="item">
+					<img src="../img/subrayador.png" alt="Subrayador">
+					<p>Subrayador</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+				<div class="item">
+					<img src="../img/rotuladores.png" alt="Rotulador">
+					<p>Rotulador</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+				<div class="item">
+					<img src="../img/agenda.png" alt="Agenda">
+					<p>Agenda</p>
+					<p><a href="#">Ver más detalles</a></p>
+				</div>
+			</div>
+		</main>
+	</div>
+	<footer>
+		<p>&copy; 2025 Dangraf | Todos los derechos reservados | <a href="../html/datos.html" target="_blank">Política de privacidad</a> | <a href="../html/aviso.html" target="_blank">Aviso legal</a></p>
+	</footer>
+
+<script>
+	function toggleMenu() {
+        document.querySelector('.navegar').classList.toggle('active');
+        document.querySelector('.ico').classList.toggle('active');
+    };
+</script>
+</body>
+</html>
