@@ -158,3 +158,4 @@ Y en tu HTML, agregas el contador:
 
 Con estos cambios, ya tienes un carrito funcional que agrega productos, muestra el total y te permite vaciarlo. ¿Te gustaría añadir alguna otra funcionalidad o mejorar algo en particular? 
 
+https://emojidb.org/exit-emojis?utm_source=user_search
