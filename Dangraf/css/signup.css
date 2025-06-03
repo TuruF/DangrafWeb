@@ -63,6 +63,11 @@ nav a:hover {
     margin-left: 10px;
 }
 
+.active {
+	background-color: #0096C7;
+	pointer-events: none;
+}
+
 .navegar {
 	margin-right: 100px;
 }

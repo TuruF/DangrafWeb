@@ -55,7 +55,6 @@ nav a {
 nav a:hover {
 	background-color: #0096C7;
 	border-radius: 5px;
-	overflow: hidden;
 }
 
 .banner img {
@@ -72,6 +71,12 @@ nav a:hover {
     cursor: pointer;
     padding: 10px;
     margin-left: 10px;
+}
+
+.active {
+	background-color: #0096C7;
+	border-radius: 5px;
+	pointer-events: none;
 }
 
 .navegar {
@@ -99,20 +104,6 @@ button:hover {
 .container {
 	display: flex;
 	flex-wrap: wrap;
-}
-
-aside {
-	width: 15%;
-	background-color: #90E0EF;
-	padding: 10px;
-	margin: 20px;
-	border-radius: 5px;
-	overflow: hidden;
-}
-
-aside ul li {
-	list-style: none;
-	padding-top: 10px;
 }
 
 .foto {
@@ -175,7 +166,6 @@ aside ul li {
 	padding: 10px;
 	border-radius: 8px;
 	width: 80%;
-	max-width: 500px;
 	text-align: center;
 	position: relative;
 	top: 50%;
@@ -194,6 +184,64 @@ aside ul li {
 	font-size: 24px;
 	cursor: pointer;
 	margin-right: 10px;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.color {
+    display: inline-flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+.azul {
+    background-color: #03045E;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.rojo {
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.amarillo {
+    background-color: yellow;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.rosa {
+    background-color: rosybrown;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.verde {
+    background-color: green;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.negro {
+    background-color: orange;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 footer {
