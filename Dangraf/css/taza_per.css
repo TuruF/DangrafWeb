@@ -172,6 +172,7 @@ button:hover {
 .texto {
     background-color: #90E0EF;
     flex: 1;
+    text-align: justify;
     padding: 10px;
     border-radius: 8px;
 }
@@ -212,6 +213,7 @@ button:hover {
     width: 50px;
     height: 50px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .rojo {
@@ -219,6 +221,7 @@ button:hover {
     width: 50px;
     height: 50px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .amarillo {
@@ -226,6 +229,7 @@ button:hover {
     width: 50px;
     height: 50px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .rosa {
@@ -233,6 +237,7 @@ button:hover {
     width: 50px;
     height: 50px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .verde {
@@ -240,6 +245,7 @@ button:hover {
     width: 50px;
     height: 50px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .negro {
@@ -247,6 +253,7 @@ button:hover {
     width: 50px;
     height: 50px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .activo {

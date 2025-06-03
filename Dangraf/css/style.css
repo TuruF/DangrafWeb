@@ -92,8 +92,7 @@ nav a:hover {
 }
 
 aside {
-	width: 15%;
-	height: 500px;
+	width: 20%;
 	background-color: #90E0EF;
 	padding: 10px;
 	margin: 20px;
@@ -105,11 +104,11 @@ aside {
 }
 
 .plazo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px; /* Espacio entre imagen y texto */
-  text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px; /* Espacio entre imagen y texto */
+	text-align: center;
 }
 
 .subir_doc {
@@ -132,6 +131,13 @@ aside {
 	background-color: #0096C7;
 	background-image: url("../img/subir-archivo.png");
 	color: black;
+}
+
+iframe {
+  width: 100%;
+  height: 500px;
+  border: 2px solid #ccc;
+  background: white;
 }
 
 main {
@@ -263,6 +269,7 @@ footer a {
 	
 	aside {
         flex: 1;
+		height: 850px;
     }
 
     main {

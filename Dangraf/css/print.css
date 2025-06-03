@@ -139,11 +139,14 @@ button:hover {
 
 .ventana-content {
 	background-color: #FFF6EE;
-	margin: 20% auto;
 	padding: 10px;
 	border-radius: 8px;
 	width: 540px;
 	text-align: center;
+	position: relative;
+	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
 }
 
 .contenido-tamano {

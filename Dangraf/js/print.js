@@ -16,57 +16,34 @@ let contador = 0;
 		document.getElementById('color').style.display = 'block';
 	});
 
-	function cerrarColor() {
-		document.getElementById('color').style.display = 'none';
-	};
-
-	window.onclick = function(event) {
-		if (event.target === document.getElementById('color')) {
-		cerrarColor();
-		}
-	};
-
 	document.querySelector('.info2').addEventListener('click', function(event) {
 		event.preventDefault();
 		document.getElementById('tamano').style.display = 'block';
 	});
-
-	function cerrarTamano() {
-		document.getElementById('tamano').style.display = 'none';
-	};
-
-	window.onclick = function(event) {
-		if (event.target === document.getElementById('tamano')) {
-		cerrarTamano();
-		}
-	};
 
 	document.querySelector('.info3').addEventListener('click', function(event) {
 		event.preventDefault();
 		document.getElementById('orientacion').style.display = 'block';
 	});
 
-	function cerrarOrientacion() {
-		document.getElementById('orientacion').style.display = 'none';
-	};
-
-	window.onclick = function(event) {
-		if (event.target === document.getElementById('orientacion')) {
-		cerrarOrientacion();
-		}
-	};
-
 	document.querySelector('.info4').addEventListener('click', function(event) {
 		event.preventDefault();
 		document.getElementById('encuadernado').style.display = 'block';
 	});
 
-	function cerrarEncuadernado() {
-		document.getElementById('encuadernado').style.display = 'none';
-	};
+	// Funciones para cerrar
+	function cerrarVentana(id) {
+		document.getElementById(id).style.display = 'none';
+	}
 
+	// Un único window.onclick
 	window.onclick = function(event) {
-		if (event.target === document.getElementById('encuadernado')) {
-		cerrarEncuadernado();
-		}
+		const modales = ['color', 'tamano', 'orientacion', 'encuadernado'];
+
+		modales.forEach(function(id) {
+			const modal = document.getElementById(id);
+			if (event.target === modal) {
+				cerrarVentana(id);
+			}
+		});
 	};
