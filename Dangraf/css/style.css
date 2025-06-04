@@ -121,7 +121,7 @@ aside {
 	width: 100%;
 	height: 50px;
 	background-color: #023E8A;
-	background-image: url("../img/vector.png");
+	background-image: url("../img/subirb.png");
 	background-repeat: no-repeat;
 	background-position: 10px center;/*primer elemento para mover horizontalmente y el segundo elemento en la vertical*/
 	text-align: center;
@@ -135,7 +135,7 @@ aside {
 
 .subir_doc:hover {
 	background-color: #0096C7;
-	background-image: url("../img/subir-archivo.png");
+	background-image: url("../img/subir.png");
 	color: black;
 }
 

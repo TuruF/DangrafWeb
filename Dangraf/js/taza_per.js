@@ -7,10 +7,14 @@ function displayimg(caja) {
 	let cambiacolor = [
         "../img/bolsablue.png",
         "../img/bolsared.png",
-        "../img/bolsablue.png",
-        "../img/bolsared.png",
-        "../img/bolsablue.png",
-        "../img/bolsared.png"
+        "../img/bolsayellow.png",
+        "../img/bolsapink.png",
+        "../img/bolsagreen.png",
+        "../img/bolsablack.png",
+        "../img/bolsa.png",
+        "../img/bolsabluel.png",
+        "../img/bolsapurple.png",
+        "../img/bolsaorange.png"
     ];
     
     let index = parseInt(caja.dataset.value);

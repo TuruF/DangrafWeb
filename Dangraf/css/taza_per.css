@@ -29,7 +29,8 @@ main {
 }
 
 header {
-	background-color: #48CAE4;
+	width: 100%;
+    background-color: #48CAE4;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -175,6 +176,11 @@ button:hover {
     padding: 10px;
 }
 
+.color > div:hover {
+  transform: scale(1.2);
+  transition: all 0.3s;
+}
+
 .texto {
     background-color: #90E0EF;
     flex: 1;
@@ -215,55 +221,98 @@ button:hover {
 }
 
 .azul {
-    background-color: #03045E;
+    background-color: #4169E1;
     width: 50px;
     height: 50px;
     cursor: pointer;
     border-radius: 50%;
+    border: 2px solid black;
 }
 
 .rojo {
-    background-color: red;
+    background-color: #EC0D0D;
     width: 50px;
     height: 50px;
     cursor: pointer;
     border-radius: 50%;
+    border: 2px solid black;
 }
 
 .amarillo {
-    background-color: yellow;
+    background-color: #FFD60A;
     width: 50px;
     height: 50px;
     cursor: pointer;
     border-radius: 50%;
+    border: 2px solid black;
 }
 
 .rosa {
-    background-color: rosybrown;
+    background-color: #FF69B4;
     width: 50px;
     height: 50px;
     cursor: pointer;
     border-radius: 50%;
+    border: 2px solid black;
 }
 
 .verde {
-    background-color: green;
+    background-color: #008F39;
     width: 50px;
     height: 50px;
     cursor: pointer;
     border-radius: 50%;
+    border: 2px solid black;
 }
 
 .negro {
-    background-color: orange;
+    background-color: #191919;
     width: 50px;
     height: 50px;
     cursor: pointer;
     border-radius: 50%;
+    border: 2px solid black;
+}
+
+.blanco {
+    background-color: #FAFBFD;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.azulc {
+    background-color: #7DF9FF;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.morado {
+    background-color: #A020F0;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.naranja {
+    background-color: #FF8000;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid black;
 }
 
 .activo {
-    border: 2px solid black;
+    border: none;
+    box-shadow: 0 0 0 4px #03045E;
 }
 
 .mensaje {
@@ -302,6 +351,7 @@ footer a {
 /*Móvil*/
 @media (max-width: 450px) {
     header {
+        width: 100%;
         flex-direction: column;
         align-items: flex-start;
         padding-left: 20px;
@@ -361,6 +411,7 @@ footer a {
 /*Tablet*/
 @media (min-width: 451px) and (max-width: 1024px) {
     header {
+        width: 100%;
         flex-direction: column;
         align-items: flex-start;
         padding-left: 20px;
