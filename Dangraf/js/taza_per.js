@@ -80,3 +80,20 @@ function cambiarContador(valor) {
     if (contador < 0) contador = 0;
     document.getElementById('contador').textContent = contador;
 };
+
+const miniatura = document.getElementById("color");
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("imagen-modal");
+
+  // Abrir modal al hacer clic en la imagen
+miniatura.onclick = function () {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+  }
+
+  // Cerrar al hacer clic fuera de la imagen
+modal.onclick = function (e) {
+    if (e.target === modalImg) {
+        modal.style.display = "none";
+    }
+  }

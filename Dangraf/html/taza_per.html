@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Regalos personalizados</title>
-	<link rel="icon" href="../img/logo4.png">
+	<link rel="icon" href="../img/icon1.png">
 	<link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../css/taza_per.css">
@@ -44,7 +44,9 @@
 				<div class="muestra">
 					<img src="../img/bolsap.png" alt="bolsa" id="color">
 				</div>
-
+				<div id="modal" class="ventana">
+					<img class="ventana-content" id="imagen-modal">
+				</div>
 				<div class="color">
 					<div class="azul" data-value="0" onclick="displayimg(this)"></div>
 					<div class="rojo" data-value="1" onclick="displayimg(this)"></div>
@@ -64,7 +66,7 @@
 				<p>¡Transforma una simple taza en un regalo inolvidable o en una poderosa herramienta de marketing!</p>
 				<button class="carrito" onclick="agregarCarrito()">🛒 Añadir al carrito</button>
 				<button class="carrito" onclick="eliminarCarrito()">🗑️ Eliminar productos</button>
-				<img src="../img/menos.png" alt="menos" class="info" onclick="cambiarContador(-1)"><span id="contador">0</span><img src="../img/mas.png" alt="mas" class="info" onclick="cambiarContador(+1)">
+				<img src="../img/menos.png" alt="menos" class="info" onclick="cambiarContador(-1)"><span id="contador">1</span><img src="../img/mas.png" alt="mas" class="info" onclick="cambiarContador(+1)">
 			</div>
 		</div>
 		<div id="mensaje" class="mensaje"></div>

@@ -125,10 +125,16 @@ button:hover {
     margin: 0 5px;
 }
 
-.info, .info1, .info2, .info3, .info4 {
-    vertical-align: top;
+.info {
+	vertical-align: top;
     margin-left: 5px;
 	cursor: pointer;
+} 
+
+.info1, .info2, .info3, .info4 {
+    vertical-align: top;
+    margin-left: 5px;
+	cursor: help;
 }
 
 .ventana {
@@ -175,6 +181,7 @@ button:hover {
 
 .vertical {
 	width: 15%;
+	margin-right: 10px;
 }
 
 .orientacion {
