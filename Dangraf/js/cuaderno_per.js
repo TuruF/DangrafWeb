@@ -5,16 +5,16 @@ function toggleMenu() {
 
 function displayimg(caja) {
 	let cambiacolor = [
-        "../img/tazablue.png",
-        "../img/tazared.png",
-        "../img/tazayellow.png",
-        "../img/tazapink.png",
-        "../img/tazagreen.png",
-        "../img/tazablack.png",
-        "../img/taza.png",
-        "../img/tazabluel.png",
-        "../img/tazapurple.png",
-        "../img/tazaorange.png"
+        "../img/cuadernoblue.png",
+        "../img/cuadernored.png",
+        "../img/cuadernoyellow.png",
+        "../img/cuadernopink.png",
+        "../img/cuadernogreen.png",
+        "../img/cuadernoblack.png",
+        "../img/cuaderno.png",
+        "../img/cuadernobluel.png",
+        "../img/cuadernopurple.png",
+        "../img/cuadernoorange.png"
     ];
     
     let index = parseInt(caja.dataset.value);

@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Regalos personalizados</title>
+	<link rel="icon" href="../img/icon1.png">
+	<link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/personalizar.css">
+</head>
+
+<body>
+	<header>
+		<div class="banner">
+			<img src="../img/banner.png" alt="Banner">
+		</div>
+		
+		<div class="menu">
+			<nav>
+				<button class="hamburger" onclick="toggleMenu()">☰</button>
+				<div class="navegar">
+					<a href="../index.html">Inicio</a>
+					<a href="../html/print.html">Impresión</a>
+					<a href="../html/tienda.html">Tienda</a>
+					<a href="../html/regalo.html" class="active">Regalos personalizados</a>
+					<a href="../html/contacto.html">Contacto</a>
+				</div>
+				<div class="ico">
+					<button type="button" class="icon"><img src="../img/carrito.png" alt="Cesta"><span class="contador">0</span></button>
+					<button type="button" class="icon" onclick="location.href='../html/login.html'"><img src="../img/usuario.png" alt="Usuario"></button>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<div class="galeria">
+				<div class="volver">
+					<a href="../html/regalo.html" class="btn-volver">↩&nbsp;&nbsp;&nbsp;&nbsp;Volver a Regalos personalizados</a>
+				</div>
+				
+				<div class="muestra">
+					<img src="../img/tazap.png" alt="bolsa" id="color">
+				</div>
+				<div id="modal" class="ventana">
+					<img class="ventana-content" id="imagen-modal">
+				</div>
+				<div class="color">
+					<div class="azul" data-value="0" onclick="displayimg(this)"></div>
+					<div class="rojo" data-value="1" onclick="displayimg(this)"></div>
+					<div class="amarillo" data-value="2" onclick="displayimg(this)"></div>
+					<div class="rosa" data-value="3" onclick="displayimg(this)"></div>
+					<div class="verde" data-value="4" onclick="displayimg(this)"></div>
+					<div class="negro" data-value="5" onclick="displayimg(this)"></div>
+					<div class="blanco" data-value="6" onclick="displayimg(this)"></div>
+					<div class="azulc" data-value="7" onclick="displayimg(this)"></div>
+					<div class="morado" data-value="8" onclick="displayimg(this)"></div>
+					<div class="naranja" data-value="9" onclick="displayimg(this)"></div>
+				</div>
+			</div>
+
+			<div class="texto">	
+				<p>Taza de cerámica de alta calidad, perfecta para personalizar con el diseño que tú elijas: nombres, frases, logos, fotos o ilustraciones. Con capacidad de 325 ml y resistente al microondas y al lavavajillas, esta taza es ideal para uso diario. Personalízala para regalar en cumpleaños, eventos especiales, promociones de empresa o simplemente para disfrutar de tu bebida favorita con un toque único.</p>
+				<p>Transforma una simple taza en un regalo inolvidable o en una poderosa herramienta de marketing.</p>
+				<button class="carrito" onclick="agregarCarrito()">🛒 Añadir al carrito</button>
+				<button class="carrito" onclick="eliminarCarrito()">🗑️ Eliminar productos</button>
+				<img src="../img/menos.png" alt="menos" class="info" onclick="cambiarContador(-1)"><span id="contador">1</span><img src="../img/mas.png" alt="mas" class="info" onclick="cambiarContador(+1)">
+			</div>
+		</div>
+		<div id="mensaje" class="mensaje"></div>
+	</main>
+
+	<footer>
+		<p>&copy; 2025 Dangraf | Todos los derechos reservados | <a href="../html/datos.html" target="_blank">Política de privacidad</a> | <a href="../html/aviso.html" target="_blank">Aviso legal</a></p>
+	</footer>
+
+	<script src="../js/taza_per.js" type="text/javascript"></script>
+</body>

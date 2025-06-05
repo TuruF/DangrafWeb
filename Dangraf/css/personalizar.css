@@ -64,7 +64,6 @@ nav a:hover {
     max-width: 100%;
     height: auto;
     display: block;
-    background-color: #008F39;
 }
 
 .hamburger {
@@ -212,10 +211,11 @@ button:hover {
 }
 
 .texto {
+    height: 100%;
+    text-align: justify;
     background-color: #90E0EF;
     flex: 1;
-    text-align: justify;
-    padding: 10px;
+    padding: 20px;
     border-radius: 8px;
 }
 
