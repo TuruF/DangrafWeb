@@ -114,6 +114,26 @@
       border-bottom: 1px solid #eee;
       padding: 8px 0;
     }
+    .mensaje {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #FFF6EE;
+      color: black;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .mensaje.mostrar {
+      opacity: 1;
+    }
 
     .cerrar-modal {
       background: #d33;
@@ -139,21 +159,21 @@
       <img src="https://via.placeholder.com/250x160?text=Silla+de+Ruedas" alt="Silla de ruedas">
       <h3>Silla de ruedas deportiva</h3>
       <p>850€</p>
-      <button onclick="agregarAlCarrito('Silla de ruedas deportiva', 850)">Añadir al carrito</button>
+      <button onclick="agregarCarrito('Silla de ruedas deportiva', 850)">Añadir al carrito</button>
     </div>
 
     <div class="producto">
       <img src="https://via.placeholder.com/250x160?text=Balon" alt="Balón de baloncesto">
       <h3>Balón de baloncesto</h3>
       <p>40€</p>
-      <button onclick="agregarAlCarrito('Balón de baloncesto', 40)">Añadir al carrito</button>
+      <button onclick="agregarCarrito('Balón de baloncesto', 40)">Añadir al carrito</button>
     </div>
 
     <div class="producto">
       <img src="https://via.placeholder.com/250x160?text=Uniforme" alt="Uniforme oficial">
       <h3>Uniforme oficial</h3>
       <p>60€</p>
-      <button onclick="agregarAlCarrito('Uniforme oficial', 60)">Añadir al carrito</button>
+      <button onclick="agregarCarrito('Uniforme oficial', 60)">Añadir al carrito</button>
     </div>
   </section>
 
@@ -165,13 +185,22 @@
       <p>Total: <span id="carrito-total">0</span> €</p>
     </div>
   </div>
-
+  <div id="mensaje" class="mensaje"></div>
   <script>
     const carrito = [];
 
-    function agregarAlCarrito(nombre, precio) {
+    function agregarCarrito(nombre, precio) {
       carrito.push({ nombre, precio });
       actualizarCarrito();
+
+    const mensaje = document.getElementById('mensaje');
+    mensaje.textContent = '✅ Producto añadido al carrito';
+
+    mensaje.classList.add('mostrar');
+
+    setTimeout(() => {
+        mensaje.classList.remove('mostrar');
+    }, 2500);
     }
 
     function actualizarCarrito() {

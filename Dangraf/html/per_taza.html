@@ -27,7 +27,7 @@
 					<a href="../html/contacto.html">Contacto</a>
 				</div>
 				<div class="ico">
-					<button type="button" class="icon"><img src="../img/carrito.png" alt="Cesta"><span class="contador">0</span></button>
+					<button type="button" class="icon" onclick="mostrarModal()"><img src="../img/carrito.png" alt="Cesta"><span class="contador" id="contador-carrito">0</span></button>
 					<button type="button" class="icon" onclick="location.href='../html/login.html'"><img src="../img/usuario.png" alt="Usuario"></button>
 				</div>
 			</nav>
@@ -64,7 +64,7 @@
 			<div class="texto">	
 				<p>Taza de cerámica de alta calidad, perfecta para personalizar con el diseño que tú elijas: nombres, frases, logos, fotos o ilustraciones. Con capacidad de 325 ml y resistente al microondas y al lavavajillas, esta taza es ideal para uso diario. Personalízala para regalar en cumpleaños, eventos especiales, promociones de empresa o simplemente para disfrutar de tu bebida favorita con un toque único.</p>
 				<p>Transforma una simple taza en un regalo inolvidable o en una poderosa herramienta de marketing.</p>
-				<button class="carrito" onclick="agregarCarrito()">🛒 Añadir al carrito</button>
+				<button class="carrito" onclick="agregarCarrito('Taza personalizada', 14.95)">🛒 Añadir al carrito &nbsp;&nbsp;&nbsp;&nbsp; 14,95€</button>
 				<button class="carrito" onclick="eliminarCarrito()">🗑️ Eliminar productos</button>
 				<img src="../img/menos.png" alt="menos" class="info" onclick="cambiarContador(-1)"><span id="contador">1</span><img src="../img/mas.png" alt="mas" class="info" onclick="cambiarContador(+1)">
 			</div>
