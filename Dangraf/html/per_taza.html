@@ -23,7 +23,7 @@
 					<a href="../index.html">Inicio</a>
 					<a href="../html/print.html">Impresión</a>
 					<a href="../html/tienda.html">Tienda</a>
-					<a href="../html/regalo.html" class="active">Regalos personalizados</a>
+					<a href="#" class="active">Regalos personalizados</a>
 					<a href="../html/contacto.html">Contacto</a>
 				</div>
 				<div class="ico">
@@ -66,10 +66,19 @@
 				<p>Transforma una simple taza en un regalo inolvidable o en una poderosa herramienta de marketing.</p>
 				<button class="carrito" onclick="agregarCarrito('Taza personalizada', 14.95)">🛒 Añadir al carrito &nbsp;&nbsp;&nbsp;&nbsp; 14,95€</button>
 				<button class="carrito" onclick="eliminarCarrito()">🗑️ Eliminar productos</button>
-				<img src="../img/menos.png" alt="menos" class="info" onclick="cambiarContador(-1)"><span id="contador">1</span><img src="../img/mas.png" alt="mas" class="info" onclick="cambiarContador(+1)">
 			</div>
 		</div>
+		
 		<div id="mensaje" class="mensaje"></div>
+
+		<div class="carro" id="modal-carrito">
+    		<div class="carro-content">
+      			<button class="cerrar" onclick="cerrarModal()">Cerrar</button>
+      			<h3>🛒 Detalles del carrito</h3>
+      			<ul id="carrito-lista"></ul>
+      			<p>Total: <span id="carrito-total">0</span> €</p>
+    		</div>
+  		</div>
 	</main>
 
 	<footer>
