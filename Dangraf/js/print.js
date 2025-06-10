@@ -62,3 +62,23 @@ inputArchivo.addEventListener("change", function () {
     alert("Por favor, selecciona un archivo PDF válido.");
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+	const buttons = document.querySelectorAll('a.btn, a.fin');
+
+	buttons.forEach(button => {
+		button.addEventListener("click", function (e) {
+			e.preventDefault(); // evitar navegación
+
+			const group = this.getAttribute("data-group");
+
+			// Deseleccionar todos los botones del grupo
+			document.querySelectorAll(`a[data-group="${group}"]`).forEach(btn => {
+				btn.classList.remove("selected");
+			});
+
+			// Seleccionar el botón clicado
+			this.classList.add("selected");
+		});
+	});
+});

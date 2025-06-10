@@ -163,6 +163,16 @@ button:hover {
 	background-color: #90E0EF;
 }
 
+.btn.selected, .fin.selected {
+	background-color: #0096C7;
+	color: black;
+	border: 2px solid #0056b3;
+}
+
+.selected img {
+	filter: brightness(0%) grayscale(100%);
+}
+
 #contador {
     text-align: center;
     font-weight: bold;
@@ -357,9 +367,10 @@ footer a {
         margin: 40% auto;
     }
 
-	section {
+	section, aside {
         flex: 1;
 		padding: 20px;
+		margin-top: 20px;
     }
 
 	.formulario {
@@ -419,8 +430,10 @@ footer a {
         margin: 40% auto;
     }
 
-	section {
-        flex: 1;
-		padding: 20px;
+
+	aside, section {
+		flex: 1;
+		padding: 5px;
+		margin: 10px;
     }
 }
