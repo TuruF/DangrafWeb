@@ -17,35 +17,34 @@ function displayimg(caja) {
         "../img/cuadernoorange.png"
     ];
     
-    let index = parseInt(caja.dataset.value);
+let index = parseInt(caja.dataset.value);
     document.getElementById('color').src = cambiacolor[index];
 
-    let divs = document.querySelectorAll('.galeria div');
-        divs.forEach(div => {
-            div.classList.remove('activo');
-        });
+let divs = document.querySelectorAll('.galeria div');
+    divs.forEach(div => {
+        div.classList.remove('activo');
+    });
 
-        // Añade la clase 'activo' al div clicado
-        caja.classList.add('activo');
+    // Añade la clase 'activo' al div clicado
+    caja.classList.add('activo');
 };
 
-let contador = 0;
+let cantidadProductos = 1;
+let totalCarrito = 0;
+const carrito = [];
 
-function agregarCarrito() {
-    contador++;
+function actualizarContadorVisual() {
+    const contadorElemento = document.querySelector ('.contador');
+        contadorElemento.textContent = carrito.length;
+        contadorElemento.style.display = carrito.length > 0 ? 'inline-block': 'none';
+};
 
-    const contadorElemento = document.querySelector('.contador');
-    if (contadorElemento) {
-        contadorElemento.textContent = contador;
-
-        // Mostrar el contador solo si es mayor que 0
-        if (contador > 0) {
-            contadorElemento.style.display = 'inline-block';
-        } else {
-            contadorElemento.style.display = 'none';
-        }
-    }
-
+function agregarCarrito(nombre, precio, imagen) {
+    carrito.push({ nombre, precio, imagen, cantidad: cantidadProductos });
+    totalCarrito++;
+    actualizarCarrito();
+    actualizarContadorVisual();
+    
     const mensaje = document.getElementById('mensaje');
     mensaje.textContent = '✅ Producto añadido al carrito';
 
@@ -57,43 +56,60 @@ function agregarCarrito() {
 };
 
 function eliminarCarrito() {
-    if (contador > 0) {
-        contador--;
-        const contadorElemento = document.querySelector('.contador');
-        contadorElemento.textContent = contador;
-        if (contador === 0) {
-            contadorElemento.style.display = 'none';
-        }
-    }
+    if (carrito.length > 0) {
+        carrito.pop();
+        totalCarrito--;
+        actualizarCarrito();
+        actualizarContadorVisual();
 
-    const mensaje = document.getElementById('mensaje');
+        const mensaje = document.getElementById('mensaje');
         mensaje.textContent = '❌ Producto eliminado del carrito';
         mensaje.classList.add('mostrar');
 
         setTimeout(() => {
             mensaje.classList.remove('mostrar');
         }, 2500);
+    }
 };
 
-function cambiarContador(valor) {
-    contador += valor;
-    if (contador < 0) contador = 0;
-    document.getElementById('contador').textContent = contador;
+function actualizarCarrito() {
+    const lista = document.getElementById("carrito-lista");
+    const total = document.getElementById("carrito-total");
+    const contador = document.getElementById("contador-carrito");
+    lista.innerHTML = "";
+    
+    carrito.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = `${item.nombre} = ${item.precio} €`;
+    lista.appendChild(li);
+    });
+
+    const suma = carrito.reduce((acc, item) => acc + item.precio, 0);
+    total.textContent = suma.toFixed(2);
+    contador.textContent = carrito.length;
+};
+
+function mostrarModal() {
+    document.getElementById("modal-carrito").style.display = "flex";
+};
+
+function cerrarModal() {
+    document.getElementById("modal-carrito").style.display = "none";
 };
 
 const miniatura = document.getElementById("color");
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("imagen-modal");
 
-  // Abrir modal al hacer clic en la imagen
+// Abrir modal al hacer clic en la imagen
 miniatura.onclick = function () {
     modal.style.display = "block";
     modalImg.src = this.src;
-  }
+};
 
-  // Cerrar al hacer clic en la imagen
+// Cerrar al hacer clic en la imagen
 modal.onclick = function (e) {
     if (e.target === modalImg) {
         modal.style.display = "none";
     }
-  }
+};

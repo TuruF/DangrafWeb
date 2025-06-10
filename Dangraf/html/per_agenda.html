@@ -23,11 +23,11 @@
 					<a href="../index.html">Inicio</a>
 					<a href="../html/print.html">Impresión</a>
 					<a href="../html/tienda.html">Tienda</a>
-					<a href="../html/regalo.html" class="active">Regalos personalizados</a>
+					<a href="#" class="active">Regalos personalizados</a>
 					<a href="../html/contacto.html">Contacto</a>
 				</div>
 				<div class="ico">
-					<button type="button" class="icon"><img src="../img/carrito.png" alt="Cesta"><span class="contador">0</span></button>
+					<button type="button" class="icon" onclick="mostrarModal()"><img src="../img/carrito.png" alt="Cesta"><span class="contador" id="contador-carrito">0</span></button>
 					<button type="button" class="icon" onclick="location.href='../html/login.html'"><img src="../img/usuario.png" alt="Usuario"></button>
 				</div>
 			</nav>
@@ -65,12 +65,21 @@
 				<p>Agenda personalizada pensada especialmente para ti, perfecta para personalizar con el diseño que tú elijas: desde portadas con imágenes, frases o logotipos, hasta un diseño interior con planificador semanal, mensual, diario o con páginas en blanco. De tamaño A5 con tapa dura perfecta para resistir el día a día.
 				<p>Personalízala para uso personal o profesional, regalos especiales, eventos corporativos o escolares y planificación académica o de proyectos.</p>
 				<p>Convierte tu agenda en una herramienta única que se adapta a tu estilo de vida, tu trabajo o tus estudios.</p>
-				<button class="carrito" onclick="agregarCarrito()">🛒 Añadir al carrito</button>
+				<button class="carrito" onclick="agregarCarrito('Agenda personalizada', 24.95)">🛒 Añadir al carrito &nbsp;&nbsp;&nbsp;&nbsp; 24,95€</button>
 				<button class="carrito" onclick="eliminarCarrito()">🗑️ Eliminar productos</button>
-				<img src="../img/menos.png" alt="menos" class="info" onclick="cambiarContador(-1)"><span id="contador">1</span><img src="../img/mas.png" alt="mas" class="info" onclick="cambiarContador(+1)">
 			</div>
 		</div>
+
 		<div id="mensaje" class="mensaje"></div>
+
+		<div class="carro" id="modal-carrito">
+    		<div class="carro-content">
+      			<button class="cerrar" onclick="cerrarModal()">Cerrar</button>
+      			<h3>🛒 Detalles del carrito</h3>
+      			<ul id="carrito-lista"></ul>
+      			<p>Total: <span id="carrito-total">0</span> €</p>
+    		</div>
+  		</div>
 	</main>
 
 	<footer>

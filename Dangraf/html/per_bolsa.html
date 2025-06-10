@@ -23,11 +23,11 @@
 					<a href="../index.html">Inicio</a>
 					<a href="../html/print.html">Impresión</a>
 					<a href="../html/tienda.html">Tienda</a>
-					<a href="../html/regalo.html" class="active">Regalos personalizados</a>
+					<a href="#" class="active">Regalos personalizados</a>
 					<a href="../html/contacto.html">Contacto</a>
 				</div>
 				<div class="ico">
-					<button type="button" class="icon"><img src="../img/carrito.png" alt="Cesta"><span class="contador">0</span></button>
+					<button type="button" class="icon" onclick="mostrarModal()"><img src="../img/carrito.png" alt="Cesta"><span class="contador" id="contador-carrito">0</span></button>
 					<button type="button" class="icon" onclick="location.href='../html/login.html'"><img src="../img/usuario.png" alt="Usuario"></button>
 				</div>
 			</nav>
@@ -65,12 +65,22 @@
 				<p>Nuestras tote bags son prácticas, ecológicas y perfectas para llevar tu estilo o marca a todas partes.</p>
 				<p>Personalízala a tu gusto con frases, ilustraciones, fotos o logotipos, perfectas para uso personal, regalos, campañas o eventos, empresas, escuelas y eventos especiales.</p>
 				<p>Bolsas reutilizables, resistentes y con mucho estilo. Impresión duradera y de alta calidad.</p>
-				<button class="carrito" onclick="agregarCarrito()">🛒 Añadir al carrito</button>
+				<button class="carrito" onclick="agregarCarrito('Tote Bag personalizada', 24.95)">🛒 Añadir al carrito &nbsp;&nbsp;&nbsp;&nbsp; 24,95€</button>
 				<button class="carrito" onclick="eliminarCarrito()">🗑️ Eliminar productos</button>
 				<img src="../img/menos.png" alt="menos" class="info" onclick="cambiarContador(-1)"><span id="contador">1</span><img src="../img/mas.png" alt="mas" class="info" onclick="cambiarContador(+1)">
 			</div>
 		</div>
+
 		<div id="mensaje" class="mensaje"></div>
+
+		<div class="carro" id="modal-carrito">
+    		<div class="carro-content">
+      			<button class="cerrar" onclick="cerrarModal()">Cerrar</button>
+      			<h3>🛒 Detalles del carrito</h3>
+      			<ul id="carrito-lista"></ul>
+      			<p>Total: <span id="carrito-total">0</span> €</p>
+    		</div>
+  		</div>
 	</main>
 
 	<footer>
