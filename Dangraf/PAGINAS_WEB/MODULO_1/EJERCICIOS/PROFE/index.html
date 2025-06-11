@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño con HTML5 y CSS</title>
+    <style>
+        /* Estilos generales para resetear márgenes y padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Contenedor principal con flexbox para organizar las secciones */
+        .container {
+            display: flex;
+            flex-direction: column; /* Organiza los elementos en columna */
+            min-height: 100vh; /* Usa toda la altura de la pantalla */
+        }
+
+        /* HEADER: Sección superior de la página */
+        header {
+            background-color: #ffcc00;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        /* NAV: Menú de navegación */
+        nav {
+            background-color: #ff9900;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        /* Contenedor del contenido principal */
+        .content {
+            display: flex; /* Usa flexbox para organizar el contenido */
+            flex: 1; /* Ocupa el espacio restante de la pantalla */
+        }
+
+        /* ASIDE: Barra lateral izquierda */
+        aside {
+            background-color: #66ccff;
+            width: 20%; /* Ocupa el 20% del ancho */
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* MAIN: Contenedor principal */
+        main {
+            background-color: #ccff99;
+            flex: 1; /* Ocupa todo el espacio disponible restante */
+            padding: 20px;
+        }
+
+        /* SECTION: Agrupa contenido dentro del main */
+        section {
+            background-color: #ff6666;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* ARTICLE: Artículo dentro de una sección */
+        article {
+            background-color: #ffffff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        /* FOOTER: Pie de página */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+
+        <!-- HEADER: Encabezado de la página -->
+        <header>
+            Universidad Ejemplo
+        </header>
+
+        <!-- NAV: Menú de navegación -->
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Carreras</a>
+            <a href="#">Admisiones</a>
+            <a href="#">Contacto</a>
+        </nav>
+
+        <!-- Contenedor del contenido principal con barra lateral -->
+        <div class="content">
+            
+            <!-- ASIDE: Barra lateral -->
+            <aside>
+                Últimas Noticias
+            </aside>
+
+            <!-- MAIN: Contenido principal -->
+            <main>
+
+                <!-- SECTION: Agrupación de contenido -->
+                <section>
+                    <h2>Bienvenidos a la Universidad</h2>
+                    <p>Información general sobre la universidad.</p>
+                    
+                    <!-- ARTICLE: Contenido específico -->
+                    <article>
+                        <h3>Nueva Facultad de Ingeniería</h3>
+                        <p>Detalles sobre la inauguración de la nueva facultad.</p>
+                    </article>
+                </section>
+
+                <section>
+                    <h2>Próximos eventos</h2>
+                    <p>Información sobre eventos académicos.</p>
+
+                    <article>
+                        <h3>Charla sobre Inteligencia Artificial</h3>
+                        <p>Fecha: 20 de abril - Ubicación: Auditorio principal.</p>
+                    </article>
+                </section>
+
+            </main>
+        </div>
+
+        <!-- FOOTER: Pie de página -->
+        <footer>
+            &copy; 2025 Universidad Ejemplo - Todos los derechos reservados.
+        </footer>
+
+    </div>
+
+</body>
+</html>

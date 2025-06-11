@@ -1,0 +1,84 @@
+
+let alumnoSeleccionado = null;
+
+function buscarAlumno() {
+    const criterio = document.getElementById('busqueda').value.toLowerCase();
+    fetch('/alumnos')
+        .then(res => res.json())
+        .then(data => {
+            const lista = document.getElementById('resultadoBusqueda');
+            lista.innerHTML = '';
+            const filtrados = data.filter(a =>
+                a.nombre.toLowerCase().includes(criterio) ||
+                a.apellidos.toLowerCase().includes(criterio)
+            );
+            filtrados.forEach(a => {
+                const li = document.createElement('li');
+                li.textContent = `Nombre: ${a.nombre}, Apellidos: ${a.apellidos}, Situación: ${a.situacion}`;
+                li.onclick = () => mostrarDetalles(a);
+                lista.appendChild(li);
+            });
+        });
+}
+
+function mostrarDetalles(alumno) {
+    alumnoSeleccionado = alumno;
+    document.getElementById('alumnoDetalles').innerHTML = `
+        <p><strong>Nombre:</strong> ${alumno.nombre}</p>
+        <p><strong>Apellidos:</strong> ${alumno.apellidos}</p>
+        <p><strong>Fecha Nac.:</strong> ${alumno.fecha_nac}</p>
+        <p><strong>Dirección:</strong> ${alumno.direccion}</p>
+        <p><strong>Fecha Alta:</strong> ${alumno.fecha_alta}</p>
+        <p><strong>Alergias:</strong> ${alumno.alergias}</p>
+        <p><strong>Vacunas:</strong> ${alumno.vacunas}</p>
+        <p><strong>Enfermedades:</strong> ${alumno.enfermedades}</p>
+        <p><strong>Padre:</strong> ${alumno.padre_nomape}</p>
+        <p><strong>Madre:</strong> ${alumno.madre_nomape}</p>
+        <p><strong>Situación:</strong> ${alumno.situacion}</p>
+        <button onclick="exportarFichaPDF()">Exportar Ficha en PDF</button>
+    `;
+    document.getElementById('datosAlumno').style.display = 'block';
+}
+
+function darDeBaja() {
+    if (!alumnoSeleccionado) return;
+    fetch('/alumnos/baja_nombre_apellidos', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            nombre: alumnoSeleccionado.nombre,
+            apellidos: alumnoSeleccionado.apellidos
+        })
+    })
+    .then(res => {
+        if (res.ok) alert('Alumno dado de baja');
+        else alert('Error al dar de baja');
+        location.reload();
+    });
+}
+
+function exportarFichaPDF() {
+    if (!alumnoSeleccionado) return;
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const a = alumnoSeleccionado;
+    doc.text('Ficha del Alumno', 10, 10);
+    let y = 20;
+    doc.text(`Nombre: ${a.nombre}`, 10, y += 10);
+    doc.text(`Apellidos: ${a.apellidos}`, 10, y += 10);
+    doc.text(`Fecha de Nacimiento: ${a.fecha_nac}`, 10, y += 10);
+    doc.text(`Dirección: ${a.direccion}`, 10, y += 10);
+    doc.text(`Fecha Alta: ${a.fecha_alta}`, 10, y += 10);
+    doc.text(`Alergias: ${a.alergias}`, 10, y += 10);
+    doc.text(`Vacunas: ${a.vacunas}`, 10, y += 10);
+    doc.text(`Enfermedades: ${a.enfermedades}`, 10, y += 10);
+    doc.text(`Padre: ${a.padre_nomape}`, 10, y += 10);
+    doc.text(`Madre: ${a.madre_nomape}`, 10, y += 10);
+    doc.text(`Situación: ${a.situacion}`, 10, y += 10);
+    doc.save(`Ficha_${a.nombre}_${a.apellidos}.pdf`);
+}
+
+function cancelar() {
+    document.getElementById('datosAlumno').style.display = 'none';
+    document.getElementById('resultadoBusqueda').innerHTML = '';
+}

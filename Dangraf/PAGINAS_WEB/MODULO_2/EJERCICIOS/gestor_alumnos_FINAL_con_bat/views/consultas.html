@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta de Alumnos</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/altas.html">Altas</a>
+        <a href="/bajas.html">Bajas</a>
+        <a href="/modificaciones.html">Modificaciones</a>
+        <a href="/consultas.html">Consultas</a>
+    </nav>
+    <div class="container">
+        <h2>Consulta de Alumnos</h2>
+        <input type="text" id="busquedaConsulta" placeholder="Buscar por ID, Nombre o Apellidos">
+        <button onclick="consultar()">Consultar</button>
+        <button onclick="exportarPDF()">Exportar a PDF</button>
+        <ul id="listaConsulta"></ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="/js/consultas.js"></script>
+</body>
+</html>

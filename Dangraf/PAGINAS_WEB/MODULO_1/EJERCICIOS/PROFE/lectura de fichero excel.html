@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leer Excel y Mostrar en HTML</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+    
+    <!-- Carga la biblioteca XLSX.js: El <script> importa la versión 0.17.1 de la biblioteca XLSX.js desde la CDN (Content Delivery Network) de cdnjs.com.
+    
+    XLSX.js: Es una librería de JavaScript ampliamente utilizada para trabajar con archivos Excel (.xlsx, .xls, .csv) en el navegador.
+    
+    XLSX Leerá archivos Excel y extraerá datos de ellos.
+    Creará y exportará archivos Excel desde datos en JavaScript.
+    Manipulará celdas, hojas y contenido de archivos Excel.
+    -->
+    
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Sube un archivo Excel y muestra sus datos</h2>
+    
+    <!-- <input type="file">:
+
+        Definimos un campo de entrada que permite seleccionar y subir archivos desde el dispositivo del 
+        usuario (el quue sea)
+        
+        id="input-excel":
+
+        Es un identificador único del elemento para poder referenciarlo desde CSS o JavaScript.
+
+        accept=".xlsx, .xls":
+
+        Con esta instrucción restringimos los tipos de archivos que se pueden seleccionar. En este caso
+        .xlsx y .xls son extensiones de archivos Excel.
+
+        onchange="leerExcel(event)":
+
+        Asociará una función JavaScript llamada leerExcel al evento onchange.
+
+        El evento onchange se dispara (activa) cuando el usuario selecciona un archivo.
+
+        El objeto event contiene información del archivo seleccionado y se pasa como argumento a la función leerExcel.
+   -->
+
+    <input type="file" id="input-excel" accept=".xlsx, .xls" onchange="leerExcel(event)">
+    <br><br>
+
+    <table id="tabla-datos">
+        <thead>
+            <tr>
+                <!-- Las cabeceras se generarán dinámicamente -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los registros se agregarán aquí -->
+        </tbody>
+    </table>
+
+    <script>
+        
+        // Función para leer el archivo Excel y mostrar los datos en la tabla
+        
+        
+        function leerExcel(event) {
+            const archivo = event.target.files[0]; // Obtener el archivo seleccionado
+            const lector = new FileReader();
+
+            lector.onload = function(e) {
+                const datos = e.target.result;
+
+                // Leer el archivo Excel
+                const libro = XLSX.read(datos, { type: 'binary' });
+
+                // Supongamos que el archivo tiene una sola hoja, si hay más puedes ajustarlo
+                const hoja = libro.Sheets[libro.SheetNames[0]];
+
+                // Convertir la hoja a un array de objetos
+                const filas = XLSX.utils.sheet_to_json(hoja, { header: 1 }); // 'header: 1' usa la primera fila como cabecera
+
+                // Llamamos a la función para mostrar los datos
+                mostrarDatos(filas);
+            };
+
+            // Leer el archivo como binario
+            lector.readAsBinaryString(archivo);
+        }
+
+        // Función para mostrar los datos en una tabla HTML
+        function mostrarDatos(filas) {
+            const tabla = document.getElementById('tabla-datos');
+            const encabezado = tabla.querySelector('thead tr');
+            const cuerpo = tabla.querySelector('tbody');
+
+            // Limpiar la tabla antes de agregar nuevos datos
+            encabezado.innerHTML = '';
+            cuerpo.innerHTML = '';
+
+            // Crear cabeceras de la tabla (si no existen)
+            if (filas.length > 0) {
+                const cabeceras = filas[0];
+                cabeceras.forEach(cabecera => {
+                    const th = document.createElement('th');
+                    th.textContent = cabecera;
+                    encabezado.appendChild(th);
+                });
+
+                // Agregar filas a la tabla
+                filas.slice(1).forEach(fila => {
+                    const tr = document.createElement('tr');
+                    fila.forEach(celda => {
+                        const td = document.createElement('td');
+                        td.textContent = celda;
+                        tr.appendChild(td);
+                    });
+                    cuerpo.appendChild(tr);
+                });
+            } else {
+                alert('El archivo no contiene datos válidos.');
+            }
+        }
+    </script>
+
+</body>
+</html>

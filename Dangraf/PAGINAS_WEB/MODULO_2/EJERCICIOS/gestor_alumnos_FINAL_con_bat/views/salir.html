@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Salir</title>
+</head>
+<body>
+    <script>
+        fetch('/alumnos/salir').then(() => {
+            window.open('', '_self', '');
+            window.close();
+        });
+    </script>
+</body>
+</html>

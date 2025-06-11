@@ -1,0 +1,31 @@
+<!DOCTYPE html> <!-- Define el tipo de documento como HTML5 -->
+<html lang="es"> <!-- Indica que el idioma del contenido es español -->
+<head>
+  <meta charset="UTF-8" /> <!-- Establece la codificación de caracteres -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Hace que el sitio sea responsive -->
+  <title>Editor de Excel Mejorado</title> <!-- Título que aparece en la pestaña del navegador -->
+  <link rel="stylesheet" href="estilos_comentado.css" /> <!-- Vincula la hoja de estilos externa -->
+</head>
+<body>
+  <h1>📄 Editor de Excel Mejorado</h1> <!-- Encabezado principal -->
+
+  <!-- Permite al usuario seleccionar un archivo Excel -->
+  <input type="file" id="archivoExcel" accept=".xlsx, .xls" />
+
+  <!-- Botones de acción: guardar cambios, alta y baja -->
+  <div id="botones">
+    <button id="confirmarCambios">✅ Confirmar Modificación</button>
+    <button id="altaFila">➕ Dar de Alta</button>
+    <button id="bajaFila">🗑️ Dar de Baja</button>
+    <button id="guardarArchivo">💾 Guardar Archivo Modificado</button>
+  </div>
+
+  <!-- Contenedor donde se mostrará la tabla editada -->
+  <div id="contenedorTabla"></div>
+
+  <!-- Inclusión de la biblioteca SheetJS para manipular archivos Excel -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+  <!-- Inclusión del script personalizado -->
+  <script src="script_comentado_completo.js"></script>
+</body>
+</html>

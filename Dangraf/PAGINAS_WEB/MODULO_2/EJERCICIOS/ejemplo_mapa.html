@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa Interactivo con Marcadores</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Mapa con chinchetas de direcciones</h2>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Inicializar el mapa centrado en una ubicación (Madrid por ejemplo)
+    const map = L.map('map').setView([40.4168, -3.7038], 13);
+
+    // Cargar los tiles (capas de mapa) de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Lista de ubicaciones con coordenadas y nombre
+    const ubicaciones = [
+      { nombre: "Puerta del Sol. Un lugar emblemático", lat: 40.4169, lng: -3.7035 },
+      { nombre: "Plaza Mayor, en el centro de Madrid", lat: 40.4154, lng: -3.7074 },
+      { nombre: "Museo del Prado. Es un museo maravilloso", lat: 40.4138, lng: -3.6921 },
+      { nombre: "Academia Colón en Madrid", lat: 40.4572, lng: -3.7076}
+    ];
+
+    // Añadir marcadores al mapa
+    ubicaciones.forEach(ubicacion => {
+      L.marker([ubicacion.lat, ubicacion.lng])
+        .addTo(map)
+        .bindPopup(`<b>${ubicacion.nombre}</b>`);
+    });
+  </script>
+
+</body>
+</html>

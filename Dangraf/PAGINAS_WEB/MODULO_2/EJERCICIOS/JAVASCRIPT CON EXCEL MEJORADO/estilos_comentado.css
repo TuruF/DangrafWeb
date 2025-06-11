@@ -1,0 +1,60 @@
+body {
+  font-family: Arial, sans-serif; /* Fuente del texto general */
+  padding: 20px; /* Espacio alrededor del contenido */
+  background: #f3f4f6; /* Color de fondo claro */
+}
+
+h1 {
+  color: #1f2937; /* Color del título */
+}
+
+input[type="file"] {
+  margin-bottom: 20px; /* Espacio debajo del input */
+}
+
+#botones {
+  margin-bottom: 20px; /* Espacio debajo del grupo de botones */
+}
+
+button {
+  margin-right: 10px; /* Separación entre botones */
+  padding: 10px 15px; /* Relleno interno */
+  font-size: 14px; /* Tamaño de fuente */
+  cursor: pointer; /* Estilo de cursor al pasar el mouse */
+  border: none; /* Sin bordes */
+  border-radius: 5px; /* Bordes redondeados */
+  background: #3b82f6; /* Color de fondo */
+  color: white; /* Color del texto */
+  transition: background 0.3s; /* Transición de color */
+}
+
+button:hover {
+  background: #2563eb; /* Color al pasar el mouse */
+}
+
+table {
+  border-collapse: collapse; /* Elimina espacio entre bordes de celdas */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  background: white; /* Fondo blanco para la tabla */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+th, td {
+  border: 1px solid #d1d5db; /* Borde gris claro */
+  padding: 10px; /* Espaciado interno */
+  text-align: left; /* Alineación del texto */
+}
+
+th {
+  background: #e5e7eb; /* Fondo para celdas de encabezado */
+  font-weight: bold; /* Negrita */
+}
+
+td {
+  cursor: pointer; /* Cursor de mano */
+}
+
+td:focus {
+  outline: 2px solid #3b82f6; /* Borde azul al enfocar */
+  background: #eef2ff; /* Fondo azul claro al editar */
+}

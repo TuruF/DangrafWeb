@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotografía de Paisajes</title>
+  <style>
+    /* ----- Estilos Generales ----- */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-image: url('fondo-paisajes.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: rgba(0, 0, 0, 0.5);
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* ----- Menú Superior ----- */
+    nav {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .menu li {
+      margin: 0 15px;
+    }
+
+    .menu li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+
+    .menu li:hover > a {
+      background-color: #555;
+    }
+
+    /* ----- Título Principal ----- */
+    .title {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 2em;
+    }
+
+    /* ----- Contenedor Principal ----- */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .section {
+      flex: 1;
+      margin: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .image-group {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .image-group div {
+      width: 48%;
+      text-align: center;
+    }
+
+    .image-group img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .section p {
+      text-align: justify;
+      margin-top: 10px;
+    }
+
+    /* ----- Footer ----- */
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      background: rgba(0, 0, 0, 0.8);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menú de Navegación -->
+  <nav>
+    <ul class="menu">
+      <li><a href="arte-abstracto.html">Arte abstracto</a></li>
+      <li><a href="retratos.html">Retratos</a></li>
+      <li><a href="ejercicio con fondo y menu.html">Volver al Menú principal</a></li>
+    </ul>
+  </nav>
+
+  <!-- Título Principal -->
+  <div class="title">La Belleza de los Paisajes</div>
+
+  <!-- Contenido Central -->
+  <div class="container">
+    <!-- Sección Izquierda -->
+    <div class="section">
+      <div class="image-group">
+        <div>
+          <img src="paisaje1.jpg" alt="Paisaje de Montaña">
+          <p>Las montañas nevadas al amanecer ofrecen una vista espectacular, donde la luz dorada baña las cumbres.</p>
+        </div>
+        <div>
+          <img src="paisaje2.jpg" alt="Bosque en Otoño">
+          <p>Los bosques en otoño se llenan de colores cálidos, creando una atmósfera mágica y acogedora.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección Derecha -->
+    <div class="section">
+      <div class="image-group">
+        <div>
+          <img src="paisaje3.jpg" alt="Playa al Atardecer">
+          <p>El sol cayendo sobre el horizonte en la playa crea un reflejo dorado sobre el agua.</p>
+        </div>
+        <div>
+          <img src="paisaje4.jpg" alt="Cascada en la Selva">
+          <p>Las cascadas en medio de la selva transmiten una sensación de paz y conexión con la naturaleza.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Galería de Fotografía | Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>

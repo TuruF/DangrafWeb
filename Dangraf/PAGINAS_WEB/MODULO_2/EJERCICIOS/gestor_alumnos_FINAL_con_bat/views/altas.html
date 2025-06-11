@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Alta de Alumno</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/altas.html">Altas</a>
+        <a href="/bajas.html">Bajas</a>
+        <a href="/modificaciones.html">Modificaciones</a>
+        <a href="/consultas.html">Consultas</a>
+    </nav>
+
+    <div class="container">
+        <h2>Alta de Alumno</h2>
+        <form id="altaForm">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" required>
+
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" required>
+
+            <label for="fecha_nac">Fecha de Nacimiento</label>
+            <input type="text" id="fecha_nac" required>
+
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" required>
+
+            <label for="fecha_alta">Fecha de Alta</label>
+            <input type="text" id="fecha_alta" required>
+
+            <label for="alergias">Alergias</label>
+            <select id="alergias" required>
+                <option value="">Seleccione</option>
+                <option value="S">Sí</option>
+                <option value="N">No</option>
+            </select>
+
+            <label for="vacunas">Vacunas</label>
+            <select id="vacunas" required>
+                <option value="">Seleccione</option>
+                <option value="S">Sí</option>
+                <option value="N">No</option>
+            </select>
+
+            <label for="enfermedades">Enfermedades</label>
+            <input type="text" id="enfermedades" required>
+
+            <label for="padre_nomape">Nombre y Apellido del Padre</label>
+            <input type="text" id="padre_nomape" required>
+
+            <label for="madre_nomape">Nombre y Apellido de la Madre</label>
+            <input type="text" id="madre_nomape" required>
+
+            <button type="submit">Dar de Alta</button>
+            <button type="reset">Limpiar</button>
+        </form>
+    </div>
+
+    
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Localización en español -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+    
+    <script>
+        // Configurar Flatpickr con formato español dd/mm/yyyy
+        flatpickr("#fecha_nac", {
+            dateFormat: "d/m/Y",
+            locale: "es"
+        });
+        flatpickr("#fecha_alta", {
+            dateFormat: "d/m/Y",
+            locale: "es"
+        });
+    </script>
+    <script src="/js/altas.js"></script>
+</body>
+</html>

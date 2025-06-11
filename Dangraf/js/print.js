@@ -64,7 +64,7 @@ inputArchivo.addEventListener("change", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-	const buttons = document.querySelectorAll('a.btn, a.fin');
+	const buttons = document.querySelectorAll('div.btn, div.fin');
 
 	buttons.forEach(button => {
 		button.addEventListener("click", function (e) {
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			const group = this.getAttribute("data-group");
 
 			// Deseleccionar todos los botones del grupo
-			document.querySelectorAll(`a[data-group="${group}"]`).forEach(btn => {
+			document.querySelectorAll(`div[data-group="${group}"]`).forEach(btn => {
 				btn.classList.remove("selected");
 			});
 

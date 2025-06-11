@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog de Galicia</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('paisaje-galicia.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      background: rgba(24,115,71,0.5);
+      width: 100%;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .menu li {
+      margin: 0 15px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: 20px 0;
+    }
+
+    aside {
+      width: 25%;
+      background: rgba(24,115,71,0.5);
+      padding: 15px;
+      border-radius: 5px;
+    }
+      
+   .left {
+      text-align: left;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .main {
+      flex: 1;
+      text-align: center;
+      background: rgba(24,115,71,0.5);
+      padding: 20px;
+      border-radius: 5px;
+      margin: 0 20px;
+    }
+      
+    /* Ajusta la primera letra en las listas dentro de aside */
+    aside ul li::first-letter {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+
+    aside ul {
+      max-height: 400px; /* Ajusta según necesidad */
+      overflow-y: auto;
+    }
+      
+    aside {
+      width: 25%;
+      background: rgba(24,115,71,0.5);
+      padding: 15px;
+      border-radius: 5px;
+      max-height: 450px; /* Ajustar según necesidad */
+      overflow: hidden;
+    }
+
+    aside ul {
+      max-height: 400px; /* Ajustar según necesidad */
+      overflow-y: auto;
+      padding-right: 10px; /* Evita que el texto quede pegado a la barra */
+    }
+
+    aside.right {
+      padding-right: 20px; /* Espacio extra en el aside derecho */
+    }
+
+    .main .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      justify-items: center;
+      margin-top: 20px;
+    }
+
+    .grid-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .grid-item img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 5px;
+    }
+
+    .grid-item a {
+      display: block;
+      color: #ffcc00;
+      text-decoration: none;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+      
+    ul li {
+      margin-bottom: 15px;
+    }
+
+    ul li a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+      
+    /* Cambia el cursor cuando pasa por encima de los enlaces */
+    ul li a, .menu a {
+      cursor: url('img/cursor.cur'), auto;
+    }
+      
+      footer {
+      width: 100%;
+      background: rgba(24,115,71,0.8);
+      text-align: center;
+      padding: 0px 0;
+      position: absolute;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+     <ul class="menu">
+      <li><a href="#">Santiago de Compostela</a></li>
+      <li><a href="#">Islas Cíes</a></li>
+      <li><a href="#">Ribeira Sacra</a></li>
+      <li><a href="#">A Coruña</a></li>
+    </ul>
+  </header>
+
+  <div class="content">
+    <aside class="left">
+      <h2>Últimas Publicaciones</h2>
+      <ul>
+        <li><a href="#">Descubre la magia de Santiago</a></li>
+        <li><a href="#">Las playas secretas de Galicia</a></li>
+        <li><a href="#">Gastronomía gallega: Pulpo á feira</a></li>
+        <li><a href="#">Los monasterios de Ribeira Sacra</a></li>
+        <li><a href="#">Fiestas tradicionales de Galicia</a></li>
+        <li><a href="#">Ruta por la Costa da Morte</a></li>
+        <li><a href="#">Senderismo en los Ancares</a></li>
+        <li><a href="#">Pueblos con encanto en Galicia</a></li>
+        <li><a href="#">El misterio de la Torre de Hércules</a></li>
+        <li><a href="#">El Camino de Santiago en imágenes</a></li>
+      </ul>
+    </aside>
+
+    <div class="main">
+      <h1>Bienvenido a Galicia</h1>
+      <div class="grid">
+        <div class="grid-item">
+            <img src="img/paisaje1.jpg" alt="Santiago de Compostela">
+            <a href="#">Descubre Santiago</a>
+        </div>
+        <div class="grid-item">
+            <img src="img/paisaje2.jpg" alt="Islas Cíes">
+            <a href="#">Explora Islas Cíes</a>
+        </div>
+        <div class="grid-item">
+            <img src="img/paisaje3.jpg" alt="Ribeira Sacra">
+            <a href="#">Ruta por Ribeira Sacra</a>
+        </div>
+        <div class="grid-item">
+            <img src="img/paisaje4.jpg" alt="A Coruña">
+            <a href="#">Visita A Coruña</a>
+        </div>
+      </div>
+    </div>
+
+    <aside class="right">
+      <h2>Últimos Comentarios</h2>
+      <ul>
+        <li><a href="#">María: Me encantó la ruta de senderismo</a></li>
+        <li><a href="#">Juan: La comida en Galicia es espectacular</a></li>
+        <li><a href="#">Laura: Volveré a las Islas Cíes</a></li>
+        <li><a href="#">Carlos: El mejor marisco lo probé en Galicia</a></li>
+        <li><a href="#">Ana: El Camino de Santiago cambió mi vida</a></li>
+        <li><a href="#">Sergio: La Ribeira Sacra es increíble</a></li>
+        <li><a href="#">Elena: Hermosa ciudad Santiago de Compostela</a></li>
+        <li><a href="#">Luis: Disfruté mucho la Torre de Hércules</a></li>
+        <li><a href="#">Sofía: Galicia tiene una historia fascinante</a></li>
+        <li><a href="#">Pedro: Recomiendo la Costa da Morte</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Blog de Galicia | Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>

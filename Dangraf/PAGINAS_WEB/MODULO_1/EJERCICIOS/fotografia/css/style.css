@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* CSS Document */
+/* ----- Estilos Generales ----- */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* Asegura que la imagen cubra toda la pantalla */
+      background-image: url('../img/fondo.jpg'); /* Ruta de la imagen */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* ----- Menú Superior ----- */
+    nav {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .menu li {
+      position: relative;
+      margin: 0 15px;
+    }
+
+    .menu li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+
+    .menu li:hover > a {
+      background-color: #555;
+    }
+
+    /* Submenú desplegable */
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #444;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      top: 100%;
+      left: 0;
+      min-width: 150px;
+    }
+
+    .submenu li a {
+      padding: 10px;
+      display: block;
+      color: white;
+    }
+
+    .submenu li a:hover {
+      background-color: #666;
+    }
+
+    .menu li:hover .submenu {
+      display: block;
+    }
+
+    /* ----- Secciones Principales ----- */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .section {
+      flex: 1;
+      margin: 10px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .section img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .section a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .section a:hover {
+      text-decoration: underline;
+    }
+
+    /* ----- Footer ----- */
+    footer {
+      text-align: center;
+      padding: 15px,0;
+      background: rgba(0, 0, 0, 0.8);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }

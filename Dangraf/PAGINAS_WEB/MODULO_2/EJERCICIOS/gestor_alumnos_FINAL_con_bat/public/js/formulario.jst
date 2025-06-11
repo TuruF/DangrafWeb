@@ -1,0 +1,27 @@
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('altaForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = {
+      nombre: document.getElementById('nombre').value,
+      apellidos: document.getElementById('apellidos').value,
+      fecha_nac: document.getElementById('fecha_nac').value,
+      direccion: document.getElementById('direccion').value,
+      fecha_alta: document.getElementById('fecha_alta').value,
+      alergias: document.getElementById('alergias').value,
+      vacunas: document.getElementById('vacunas').value,
+      enfermedades: document.getElementById('enfermedades').value,
+      padre_nomape: document.getElementById('padre_nomape').value,
+      madre_nomape: document.getElementById('madre_nomape').value,
+      situacion: 'A'
+    };
+
+    const res = await fetch('/alumnos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+
+    const result = await res.json();
+    alert(result.status === 'ok' ? 'Alumno agregado con ID: ' + result.id : 'Error al agregar alumno');
+  });
+});

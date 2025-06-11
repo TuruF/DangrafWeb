@@ -1,0 +1,27 @@
+<!DOCTYPE html> <!-- Declaración del tipo de documento HTML5 -->
+<html lang="es"> <!-- Inicio del documento en español -->
+<head>
+  <meta charset="UTF-8" /> <!-- Codificación UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Ajuste de vista para móviles -->
+  <title>Visor e Impresor de PDF</title> <!-- Título de la pestaña -->
+  <link rel="stylesheet" href="estilos.css" /> <!-- Vinculación de hoja de estilos -->
+</head>
+<body>
+  <h1>📝 Visor e Impresor de PDF</h1> <!-- Encabezado principal -->
+
+  <!-- Campo de carga de archivos PDF -->
+  <input type="file" id="archivoPDF" accept=".pdf" />
+
+  <!-- Botón para imprimir el contenido cargado -->
+  <button id="imprimir">🖨️ Imprimir PDF</button>
+
+  <!-- Contenedor del visor PDF -->
+  <iframe id="visorPDF" frameborder="0"></iframe> <!-- Vista incrustada del PDF -->
+
+  <!-- Inclusión de librería pdf.js para renderizado -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
+</body>
+</html>

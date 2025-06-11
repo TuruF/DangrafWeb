@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explora la Naturaleza</title>
+  <link rel="stylesheet" href="main.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <h1>🌍 Explora la Naturaleza</h1>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="descripciones.html">Descripciones</a></li>
+        <li><a href="#videos">Vídeos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="grid-container">
+    <!-- Columna Izquierda: Enlaces -->
+    <aside class="left-sidebar">
+      <ul>
+        <li><a href="descripciones.html#leon">🦁 León</a></li>
+        <li><a href="descripciones.html#jirafa">🦒 Jirafa</a></li>
+        <li><a href="descripciones.html#oso">🐻 Oso</a></li>
+        <li><a href="descripciones.html#elefante">🐘 Elefante</a></li>
+        <li><a href="descripciones.html#cebra">🦓 Cebra</a></li>
+        <li><a href="descripciones.html#tigre">🐅 Tigre</a></li>
+        <li><a href="descripciones.html#hipopotamo">🦛 Hipopótamo</a></li>
+        <li><a href="descripciones.html#rinoceronte">🦏 Rinoceronte</a></li>
+        <li><a href="descripciones.html#cocodrilo">🐊 Cocodrilo</a></li>
+        <li><a href="descripciones.html#avestruz">🐦 Avestruz</a></li>
+        <li><a href="descripciones.html#camaleon">🦎 Camaleón</a></li>
+        <li><a href="descripciones.html#oso-polar">🐻‍❄️ Oso Polar</a></li>
+        <li><a href="descripciones.html#aguila">🦅 Águila</a></li>
+        <li><a href="descripciones.html#pinguino">🐧 Pingüino</a></li>
+        <li><a href="descripciones.html#mono">🐒 Mono</a></li>
+        <li><a href="descripciones.html#lobo">🐺 Lobo</a></li>
+        <li><a href="descripciones.html#búho">🦉 Búho</a></li>
+        <li><a href="descripciones.html#flamenco">🦩 Flamenco</a></li>
+        <li><a href="descripciones.html#ballena">🐋 Ballena</a></li>
+        <li><a href="descripciones.html#delfin">🐬 Delfín</a></li>
+      </ul>
+    </aside>
+
+    <!-- Columna Central: Contenido Principal -->
+    <main class="main-content">
+      <section id="videos">
+        <h2>🎥 Vídeos de Naturaleza</h2>
+        <div class="video-grid">
+          <iframe src="https://www.youtube.com/embed/lE6RYpe9IT0" title="Leones" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/YWymdePxgu4" title="Jirafas" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/VoF_NNrNbic" title="Osos" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/9vgnXRypc4o" title="Elefantes" allowfullscreen></iframe>
+        </div>
+      </section>
+    </main>
+
+    <!-- Columna Derecha: Galería de Imágenes -->
+    <aside class="right-sidebar">
+      <h3>📸 Galería</h3>
+      <div class="gallery">
+        <img src="lion-4822075_1280.jpg" alt="León" onclick="openPopup(this.src)" />
+        <img src="animal-4638681_1280.jpg" alt="Jirafa" onclick="openPopup(this.src)" />
+        <img src="polar-bear-6951677_1280.jpg" alt="Oso" onclick="openPopup(this.src)" />
+        <img src="animal-6714423_1280.jpg" alt="Elefante" onclick="openPopup(this.src)" />
+      </div>
+    </aside>
+  </div>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">
+    <span class="close" onclick="closePopup()">❌</span>
+    <img id="popup-img" src="" alt="Imagen grande" />
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Explora la Naturaleza | <a href="#">Acerca de</a></p>
+  </footer>
+</body>
+</html>

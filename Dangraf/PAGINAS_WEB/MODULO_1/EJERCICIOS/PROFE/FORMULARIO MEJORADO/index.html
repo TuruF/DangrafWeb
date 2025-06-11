@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Mejorado</title>
+    <link rel="stylesheet" href="estilo.css">
+
+    <!-- Script para detectar si la pantalla es móvil y redirigir -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (window.innerWidth <= 768) {
+                window.location.href = "mobile.html"; // Redirige a la versión móvil
+            }
+        });
+    </script>
+</head>
+<body>
+
+    <!-- Menú de navegación fijo -->
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenedor principal con grid -->
+    <div class="grid-container">
+        
+        <!-- Sección izquierda (Menú lateral) -->
+        <aside class="aside aside-izquierdo">
+            <h2>📌 Menú</h2>
+            <ul>
+                <li><a href="#">Opción 1</a></li>
+                <li><a href="#">Opción 2</a></li>
+                <li><a href="#">Opción 3</a></li>
+            </ul>
+        </aside>
+
+        <!-- Sección central (Formulario) -->
+        <main>
+            <h2>📝 Formulario de Registro</h2>
+            <form>
+                <!-- Campo Nombre -->
+                <label for="name">👤 Nombre:</label>
+                <input type="text" id="name" placeholder="Escribe tu nombre" required>
+
+                <!-- Campo Email -->
+                <label for="email">📧 Email:</label>
+                <input type="email" id="email" placeholder="Tu email" required>
+
+                <!-- Selector de Color -->
+                <label for="color">🎨 Elige un color:</label>
+                <input type="color" id="color">
+                <span id="color-display"></span> <!-- Muestra el color seleccionado -->
+
+                <!-- Selector de Rango -->
+                <label for="range">📏 Selecciona un valor:</label>
+                <input type="range" id="range" min="0" max="100" value="50">
+                <span id="range-value">50</span> <!-- Muestra el valor del rango -->
+
+                <!-- Botón de envío -->
+                <button type="submit">Enviar</button>
+            </form>
+        </main>
+
+        <!-- Sección derecha (Información adicional) -->
+        <aside class="aside aside-derecho">
+            <h2>ℹ️ Información</h2>
+            <p>Este es un texto de ejemplo dentro del aside derecho. Aquí puedes colocar cualquier información relevante.</p>
+        </aside>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Cambia el color del cuadro al seleccionar un color
+        document.getElementById('color').addEventListener('input', function() {
+            document.getElementById('color-display').style.backgroundColor = this.value;
+        });
+
+        // Muestra el valor seleccionado en el rango
+        document.getElementById('range').addEventListener('input', function() {
+            document.getElementById('range-value').textContent = this.value;
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotografía y Arte</title>
+  <style>
+    /* ----- Estilos Generales ----- */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* Asegura que la imagen cubra toda la pantalla */
+      background-image: url('foto_retrato.jpg'); /* Ruta de la imagen */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* ----- Menú Superior ----- */
+    nav {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .menu li {
+      position: relative;
+      margin: 0 15px;
+    }
+
+    .menu li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+
+    .menu li:hover > a {
+      background-color: #555;
+    }
+
+    /* ----- Título Principal ----- */
+    .title {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 2em;
+    }
+
+    /* ----- Secciones Principales ----- */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .section {
+      flex: 1;
+      margin: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 10px;
+     align-items: center; /* Centra la imagen horizontalmente */
+      justify-content: center; /* Centra la imagen verticalmente */       
+    }
+
+    .section img {
+      width: 75%;
+      height: auto;
+      margin-left: 70px;    
+      border-radius: 5px;
+      
+      }
+      
+  /*   .section img {
+      width: 25%;
+      height: 50%;
+      object-fit: cover;
+      border-radius: 5px;
+      flex-grow: 1;} */
+
+      .section a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .section a:hover {
+      text-decoration: underline;
+    }
+
+    /* ----- Footer ----- */
+    footer {
+      text-align: center;
+      padding: 15px,0px;
+      background: rgba(0, 0, 0, 0.8);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menú de Navegación -->
+  <nav>
+    <ul class="menu">
+      <li><a href="paisajes.html">Paisajes</a></li>
+      <li><a href="arte-abstracto.html">Arte Abstracto</a></li>
+      <li><a href="ejercicio con fondo y menu.html">Volver al Menú principal</a></li>
+    </ul>
+  </nav>
+
+  <!-- Título Principal -->
+  <div class="title">Fotografía de Retratos</div>
+
+  <!-- Contenido Central -->
+  <div class="container">
+    <!-- Sección Izquierda: Foto y Explicación -->
+    <div class="section">
+      <img src="retrato_blanco_negro.jpg" alt="Retrato Fotográfico">
+      <p>Esta fotografía se realizó utilizando una iluminación suave para resaltar las facciones del sujeto. Se empleó una lente de 85mm para lograr un efecto bokeh en el fondo, enfocando toda la atención en el rostro.</p>
+    </div>
+    <!-- Sección Derecha: Enlaces a Exposiciones -->
+    <div class="section">
+      <h2>Próximas Exposiciones en Madrid</h2>
+      <ul>
+        <li><a href="https://www.museothyssen.org/exposiciones/proust-y-las-artes">Proust y las artes - Museo Nacional Thyssen-Bornemisza (4 de marzo al 8 de junio de 2025)</a></li>
+        <li><a href="https://www.m-arteyculturavisual.com/2025/01/01/exposiciones-en-cartelera-2025/">Marina Gadea: El paisaje sumergido - Casa de Iberoamérica, Cádiz (7 de febrero al 26 de abril de 2025)</a></li>
+        <li><a href="https://www.comunidad.madrid/noticias/2024/12/30/comunidad-madrid-dedicara-proximas-exposiciones-2025-fotografia-creacion-contemporanea">Exposición dedicada a Lorenzo Caprile - Sala Canal de Isabel II (Hasta el 30 de marzo de 2025)</a></li>
+        <li><a href="https://www.timeout.es/madrid/es/arte/exposiciones-de-fotografia-imprescindibles-en-madrid">Ferrater. Foto. Moda. Fuerza - Museo del Traje (Hasta el 16 de marzo de 2025)</a></li>
+        <li><a href="https://www.vogue.es/articulos/exposiciones-2025-madrid-mejores">Flamboyant, de Joana Vasconcelos - Palacio de Liria (Desde el 13 de febrero de 2025)</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Galería de Fotografía | Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>

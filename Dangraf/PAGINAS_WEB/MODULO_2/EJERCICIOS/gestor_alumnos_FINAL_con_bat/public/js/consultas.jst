@@ -1,0 +1,44 @@
+
+function consultar() {
+    const criterio = document.getElementById('busquedaConsulta').value.toLowerCase();
+
+    fetch('/alumnos')
+        .then(res => res.json())
+        .then(data => {
+            const lista = document.getElementById('listaConsulta');
+            lista.innerHTML = '';
+
+            const filtrados = data.filter(a =>
+                a.nombre.toLowerCase().includes(criterio) ||
+                a.apellidos.toLowerCase().includes(criterio) ||
+                (a.situacion && a.situacion.toLowerCase().includes(criterio))
+            );
+
+            filtrados.forEach(a => {
+                const li = document.createElement('li');
+                li.textContent = `Nombre: ${a.nombre}, Apellidos: ${a.apellidos}, Situación: ${a.situacion}`;
+                lista.appendChild(li);
+            });
+        });
+}
+
+function exportarPDF() {
+    fetch('/alumnos')
+        .then(res => res.json())
+        .then(data => {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const fecha = new Date().toLocaleString();
+            doc.text(`Listado de Alumnos - ${fecha}`, 10, 10);
+            let y = 20;
+            data.forEach((a, i) => {
+                doc.text(`Nombre: ${a.nombre}, Apellidos: ${a.apellidos}, Situación: ${a.situacion}`, 10, y);
+                y += 10;
+                if (y > 280) {
+                    doc.addPage();
+                    y = 10;
+                }
+            });
+            doc.save('listado_alumnos.pdf');
+        });
+}

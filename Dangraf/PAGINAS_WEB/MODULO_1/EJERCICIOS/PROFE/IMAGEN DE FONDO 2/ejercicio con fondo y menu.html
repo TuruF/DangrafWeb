@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotografía y Arte</title>
+  <style>
+    /* ----- Estilos Generales ----- */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* Asegura que la imagen cubra toda la pantalla */
+      background-image: url('fondo.jpg'); /* Ruta de la imagen */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* ----- Menú Superior ----- */
+    nav {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .menu li {
+      position: relative;
+      margin: 0 15px;
+    }
+
+    .menu li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+
+    .menu li:hover > a {
+      background-color: #555;
+    }
+
+    /* Submenú desplegable */
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #444;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      top: 100%;
+      left: 0;
+      min-width: 150px;
+    }
+
+    .submenu li a {
+      padding: 10px;
+      display: block;
+      color: white;
+    }
+
+    .submenu li a:hover {
+      background-color: #666;
+    }
+
+    .menu li:hover .submenu {
+      display: block;
+    }
+
+    /* ----- Secciones Principales ----- */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .section {
+      flex: 1;
+      margin: 10px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .section img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .section a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .section a:hover {
+      text-decoration: underline;
+    }
+
+    /* ----- Footer ----- */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.8);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menú de Navegación -->
+  <nav>
+    <ul class="menu">
+      <li><a href="#">Inicio</a></li>
+      <li>
+        <a href="#">Categorías</a>
+        <ul class="submenu">
+          <li><a href="paisajes.html">Paisajes</a></li>
+          <li><a href="retratos.html">Retratos</a></li>
+          <li><a href="arte-abstracto.html">Arte Abstracto</a></li>
+        </ul>
+      </li>
+       <li><a href="acercade.html" target="_blank">Contacto</a></li>
+
+    </ul>
+  </nav>
+
+  <!-- Contenido Central -->
+  <div class="container">
+    <div class="section">
+      <h2>Fotografía de Paisajes</h2>
+      <img src="paisaje.jpg" alt="Paisaje">
+      <p>Descubre la belleza de la naturaleza a través de la fotografía de paisajes.</p>
+      <a href="paisajes.html">Más información</a>
+    </div>
+
+    <div class="section">
+      <h2>Fotografía de Retratos</h2>
+      <img src="retrato.jpg" alt="Retrato">
+      <p>Captura la esencia de las personas a través de retratos impactantes.</p>
+      <a href="retratos.html">Más información</a>
+    </div>
+
+    <div class="section">
+      <h2>Arte Abstracto</h2>
+      <img src="abstracto.webp" alt="Arte Abstracto">
+      <p>Explora el mundo del arte abstracto a través de la fotografía creativa.</p>
+      <a href="arte-abstracto.html">Más información</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Galería de Fotografía | Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>

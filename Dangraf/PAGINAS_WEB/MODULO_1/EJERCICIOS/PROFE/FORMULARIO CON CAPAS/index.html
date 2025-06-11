@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Completo</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="form-container">
+            <h2>📋 Formulario Completo</h2>
+            <form>
+                <label for="name">👤 Nombre:</label>
+                <input type="text" id="name" placeholder="Escribe tu nombre" required>
+                
+                <label for="email">📧 Correo Electrónico:</label>
+                <input type="email" id="email" placeholder="Escribe tu email" required>
+                
+                <label for="password">🔒 Contraseña:</label>
+                <input type="password" id="password" placeholder="Escribe tu contraseña" required>
+                
+                <label for="date">📅 Fecha de Nacimiento:</label>
+                <input type="date" id="date" required>
+                
+                <label for="color">🎨 Elige un color:</label>
+                <input type="color" id="color" onchange="updateColor()">
+                <div id="color-box"></div>
+                
+                <label for="number">🔢 Número:</label>
+                <input type="number" id="number" min="1" max="100" required>
+                
+                <label for="file">📂 Subir Archivo:</label>
+                <input type="file" id="file">
+                
+                <label for="range">📏 Rango:</label>
+                <input type="range" id="range" min="0" max="100">
+                
+                <label>⚡ Género:</label>
+                <label><input type="radio" name="gender" value="male"> Masculino</label>
+                <label><input type="radio" name="gender" value="female"> Femenino</label>
+                
+                <label for="country">🌍 País:</label>
+                <select id="country">
+                    <option value="es">España</option>
+                    <option value="mx">México</option>
+                    <option value="ar">Argentina</option>
+                    <option value="us">Estados Unidos</option>
+                </select>
+                
+                <label><input type="checkbox" required> Acepto los términos y condiciones</label>
+                
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Todos los derechos reservados</p>
+    </footer>
+    
+    <script>
+        function updateColor() {
+            const colorInput = document.getElementById('color');
+            const colorBox = document.getElementById('color-box');
+            colorBox.style.backgroundColor = colorInput.value;
+        }
+    </script>
+</body>
+</html>

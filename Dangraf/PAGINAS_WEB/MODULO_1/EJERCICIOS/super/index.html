@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Supermercado Gitanil</title>
+	<link rel="icon" href="img/super.ico">
+	<style>
+			
+		body{
+			text-align: center;
+		}		
+		table{
+			border-collapse: collapse;
+			text-align: justify;
+		}
+		th, td{
+			position: relative;
+			border: 1px solid;
+			padding: 5px;
+		}
+		img{
+			width: auto;
+			height: 200px;
+		}
+		a{
+			text-decoration: none;
+			color: blue;
+		}
+		.al{
+			width: 500px;
+			height: 200px;
+			cursor: pointer;
+		}
+		.be{
+			width: 500px;
+			height: 200px;
+			cursor: pointer;
+		}
+		.pan{
+			width: 500px;
+			height: 200px;
+			cursor: pointer;
+		}
+		.img{
+			position: absolute;
+			top: 0;
+			object-fit: cover;
+		}
+		.txt1{
+			position: absolute;
+			top: 0;
+			display: flex;
+		 	visibility: hidden;
+		}
+		.txt2{
+			position: absolute;
+			top: 0;
+			display: flex;
+		 	visibility: hidden;
+		}
+		.txt3{
+			position: absolute;
+			top: 0;
+			display: flex;
+		 	visibility: hidden;
+		}
+		.al:hover .img{
+			visibility: hidden;
+		}
+		.al:hover .txt1{
+			visibility: visible;
+		}
+		.be:hover .img{
+			visibility: hidden;
+		}
+		.be:hover .txt2{
+			visibility: visible
+		}
+		.pan:hover .img{
+			visibility: hidden;
+		}
+		.pan:hover .txt3{
+			visibility: visible;
+		}
+				
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>GITANIL EXPRESS</h1>
+		<table align="center">
+			<tr>
+				<td><a href="html/alimentacion.html">ALIMENTACIÓN</a></td>
+				<td><a href="html/bebida.html">BEBIDAS</a></td>
+				<td><a href="html/pan.html">PANADERÍA</a></td>
+			</tr>
+		</table><br><br>
+	</header>
+	<table align="center">
+		<tr>
+			<td rowspan="3">
+				<div>
+					<dl>
+						<dt><a href="">Alimentación</a></dt>
+							<dd>Pescadería</dd>
+							<dd>Carnicería</dd>
+						<dt><a href="">Bebidas</a></dt>
+							<dd>Cervezas</dd>
+							<dd>Refrescos</dd>
+							<dd>Zumos</dd>
+						<dt><a href="">Panadería</a></dt>
+							<dd>Panes</dd>
+							<dd>Bollería</dd>
+							<dd>Pasteles</dd>
+					</dl>
+				</div>
+			</td>
+				
+			<td class="al">
+				<img src="https://restaurantecasaantonio.net/wp-content/uploads/2018/08/10-consejos-para-una-alimentaci%C3%B3n-saludable-1200x900.jpg" class="img">
+				<div class="txt1">
+				La alimentación, por definición, es el conjunto de acciones mediante las cuales se proporcionan alimentos al organismo. Es decir, abarca la selección de los alimentos, el cocinado y su ingestión. La alimentación depende de muchas variantes, desde las necesidades individuales y la disponibilidad de alimentos hasta aspectos psicológicos y modas. Además de ser una necesidad vital para la supervivencia, la alimentación también es bienestar, cultura y placer.
+				</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="be">
+				<img src="https://media.istockphoto.com/id/887380068/es/vector/botellas-de-refrescos.jpg?s=612x612&w=0&k=20&c=bvVYEIm6zQoyNNIMYNJVszJvT6-UfLyKybyKeUQ6CUI=" class="img">
+				<div class="txt2">
+				Bebida es cualquier líquido que se ingiere. La bebida más consumida es el agua. Otros ejemplos son las bebidas alcohólicas, bebidas gaseosas, infusiones o zumos. En Chile se le llama bebida exclusivamente a las gaseosas. Siendo su principal objeto ser bebidas para calmar la sed, el consumo de ciertas bebidas, especialmente espirituosas, ha estado con no poca frecuencia vinculado a la celebración de rituales de carácter religioso (tómese por ejemplo la eucaristía del rito católico), siendo su consumo hoy día, quizá a modo de reminiscencia de aquellos ritos, muy frecuente en encuentros sociales y celebraciones.
+				</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="pan">
+				<img src="https://static.vecteezy.com/system/resources/previews/007/106/230/non_2x/various-breads-set-bakery-pastry-products-cartoon-isolated-on-white-vector.jpg" class="img">
+				<div class="txt3">
+				Se conoce como panadería al recinto donde se produce y/o se comercializa el pan. El término también alude al oficio del sujeto dedicado a la elaboración de este producto. Cabe destacar que el pan es un alimento que se prepara cocinando una masa de harina, agua y, por lo general, levadura. A partir de esta receta básica, se pueden incluir múltiples ingredientes y obtener diferentes clases de panes.
+				</div>
+			</td>
+		</tr>
+	
+	</table>
+	
+
+</body>
+	
+</html>

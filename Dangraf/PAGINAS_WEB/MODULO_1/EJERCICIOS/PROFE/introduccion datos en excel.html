@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<!-- Orden de Ejecución del HTML / CSS / SCRIPT:
+
+ 1.- <!DOCTYPE html>: El navegador reconoce el documento como HTML5.
+
+ 2.- <html lang="es">: Se define el idioma del documento como español.
+
+ 3.- <head>: Inicio de la cabecera del documento.
+
+        <meta charset="UTF-8">: Configura la codificación de caracteres como UTF-8.
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">: Ajusta la escala y visibilidad en dispositivos móviles.
+
+        <title>: Se define el título de la página web: "Formulario Dinámico y Exportación a Excel".
+
+        Carga de la biblioteca XLSX.js con <script src="https://cdnjs.cloudflare.com/...">: El navegador descarga y carga esta biblioteca para manejar archivos Excel. Este script se carga y queda disponible antes de ejecutar cualquier otro código JavaScript del documento.
+
+        Estilos CSS:
+
+        Se establecen estilos para el body, h2, #formulario, y los elementos de formulario (input, select).
+
+        Estos estilos son procesados y aplicados antes de mostrar el contenido visual de la página.
+    
+ 4.- </head>: Finaliza la cabecera del documento.
+
+ 5.- <body>: Inicio del cuerpo del documento HTML.
+
+        <h2>: Se muestra el título "Formulario Dinámico y Exportación a Excel".
+
+        <div id="formulario">: Se crea el formulario con el campo de texto, el selector y el botón "Agregar Campo". Aquí aún no hay interacción JavaScript.
+
+        <table id="tabla-datos">:
+
+        Se crea la estructura de la tabla con <thead> y <tbody>. Ambos están vacíos inicialmente.
+
+        El navegador renderiza la estructura, pero no hay contenido dinámico hasta que se ejecute JavaScript.
+
+        <div id="botones">:
+
+        Botones "Agregar Fila" y "Finalizar y Exportar a Excel". Solo se renderizan; los eventos onclick no se ejecutan hasta que el usuario haga clic.
+
+ 6.- Inicio del bloque <script>: Aquí comienza la ejecución de JavaScript.
+
+        Declaración del array cabeceras: Se inicializa vacío. Este será usado para almacenar las cabeceras dinámicas.
+
+        Función agregarCampo():
+
+        Espera a ser llamada desde el botón "Agregar Campo".
+        Lee los valores del campo de texto y del selector.
+        Valida y agrega una nueva cabecera a la tabla si no está vacía ni repetida.
+        Función agregarFila():
+
+        Se ejecuta solo cuando se hace clic en "Agregar Fila".
+        Crea una fila dinámica de datos según las cabeceras configuradas previamente.
+        Función exportarExcel():
+
+        Se llama cuando se hace clic en "Finalizar y Exportar a Excel".
+        Valida que todos los campos estén completos.
+
+        Crea el archivo Excel con la biblioteca XLSX.js y lo descarga.
+
+ 7.- Final del <script> y del <body>:
+
+        El navegador concluye la carga inicial y muestra toda la página.
+
+        Las funciones JavaScript quedan listas para ejecutarse en respuesta a los eventos de usuario (clics en los botones).
+
+ Indice del Resumen del Orden de Ejecución:
+    
+    1. Estructura HTML y carga del DOM.
+    2. Carga y aplicación de estilos CSS.
+    3. Carga de la biblioteca XLSX.js (antes del JavaScript del documento).
+    4. Declaración y definición de funciones JavaScript.
+    5. Espera de interacción del usuario para ejecutar las funciones JavaScript (eventos onclick).
+-->
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Dinámico y Exportación a Excel</title>
+    <!-- Biblioteca XLSX.js para trabajar con archivos Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+    <style>
+        /* Estilos generales del cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif;  /* Fuente del cuerpo */
+            background-color: #f4f4f9;       /* Fondo gris claro */
+            margin: 20px;                    /* Margen alrededor de la página */
+            padding: 20px;                   /* Relleno interno */
+        }
+
+        /* Estilo del título principal */
+        h2 {
+            text-align: center;              /* Centrado del texto */
+            margin-bottom: 20px;             /* Separación inferior */
+        }
+
+        /* Diseño del formulario para agregar cabeceras */
+        #formulario {
+            display: flex;                   /* Diseño flexible para alinear los elementos */
+            justify-content: center;         /* Centrado horizontal */
+            flex-wrap: wrap;                 /* Permitir ajuste de línea */
+            gap: 10px;                       /* Espacio entre elementos */
+            margin-bottom: 20px;             /* Separación inferior */
+        }
+
+        /* Estilo de los inputs y selectores del formulario */
+        #formulario input, #formulario select {
+            padding: 8px;                    /* Relleno interno */
+            margin: 5px;                     /* Margen para separación */
+            border: 1px solid #ccc;          /* Borde gris claro */
+            border-radius: 4px;              /* Bordes redondeados */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Título principal -->
+    <h2>Formulario Dinámico y Exportación a Excel</h2>
+
+    <!-- Formulario para agregar nuevas cabeceras -->
+    <div id="formulario">
+        <!-- Campo de texto para ingresar el nombre de la cabecera -->
+        <input type="text" id="campo" placeholder="Nombre del Campo">
+        
+        <!-- Selector de tipo de dato para el campo -->
+        <select id="tipo">
+            <option value="text">Texto</option>      <!-- Campo de texto estándar -->
+            <option value="number">Número</option>   <!-- Campo numérico -->
+            <option value="date">Fecha</option>      <!-- Campo de fecha -->
+            <option value="email">Correo</option>    <!-- Campo de correo electrónico -->
+        </select>
+
+        <!-- Botón para agregar la cabecera al formulario -->
+        <button onclick="agregarCampo()">Agregar Campo</button>
+    </div>
+
+    <!-- Tabla donde se mostrarán las cabeceras y los datos dinámicos -->
+    <table id="tabla-datos">
+        <thead>
+            <tr id="encabezado">
+                <!-- Aquí se agregarán dinámicamente las cabeceras -->
+            </tr>
+        </thead>
+        <tbody id="cuerpo">
+            <!-- Aquí se agregarán dinámicamente las filas de datos -->
+        </tbody>
+    </table>
+
+    <!-- Botones para agregar filas de datos y exportar a Excel -->
+    <div id="botones">
+        <button onclick="agregarFila()">Agregar Fila</button> <!-- Añadir nueva fila -->
+        <button onclick="exportarExcel()">Finalizar y Exportar a Excel</button> <!-- Exportar datos -->
+    </div>
+
+    <script>
+        // Array para almacenar las cabeceras con su nombre y tipo de dato
+        let cabeceras = [];
+
+        // Función para agregar una nueva cabecera al formulario y la tabla
+        function agregarCampo() {
+            const campo = document.getElementById("campo").value; // Valor ingresado como nombre del campo
+            const tipo = document.getElementById("tipo").value;   // Tipo de dato seleccionado
+
+            // Verificar que el campo no esté vacío y no exista previamente
+            if (campo && !cabeceras.some(c => c.nombre === campo)) {
+                // Agregar la cabecera al array como objeto {nombre, tipo}
+                cabeceras.push({ nombre: campo, tipo: tipo });
+
+                // Crear un nuevo elemento <th> (encabezado de la tabla) y añadirlo al <tr> con id="encabezado"
+                const th = document.createElement("th");
+                th.textContent = campo;  // Texto del encabezado basado en el nombre del campo
+                document.getElementById("encabezado").appendChild(th);  // Añadir el encabezado a la tabla
+            }
+
+            // Limpiar el campo de entrada para futuros valores
+            document.getElementById("campo").value = "";
+        }
+
+        // Función para agregar una nueva fila de datos según las cabeceras configuradas
+        function agregarFila() {
+            // Verificar que haya al menos una cabecera creada
+            if (cabeceras.length === 0) {
+                alert("Por favor, agrega al menos una cabecera antes de añadir datos.");
+                return;
+            }
+
+            // Crear una nueva fila de la tabla <tr>
+            const tr = document.createElement("tr");
+            let primerCampo; // Variable para enfocar el primer campo de la fila
+
+            // Iterar sobre las cabeceras para crear campos de entrada (inputs) según su tipo
+            cabeceras.forEach((cabecera, index) => {
+                const td = document.createElement("td");          // Crear una celda <td>
+                const input = document.createElement("input");    // Crear un campo de entrada <input>
+                input.type = cabecera.tipo;                       // Asignar tipo según la cabecera
+
+                // Guardar el primer campo de la fila para enfocar
+                if (index === 0) {
+                    primerCampo = input;
+                }
+
+                td.appendChild(input);    // Añadir el input a la celda <td>
+                tr.appendChild(td);       // Añadir la celda a la fila <tr>
+            });
+
+            // Agregar la fila completa al cuerpo de la tabla <tbody>
+            document.getElementById("cuerpo").appendChild(tr);
+
+            // Colocar el foco en el primer campo de la fila recién creada
+            if (primerCampo) primerCampo.focus();
+        }
+
+        // Función para exportar los datos a un archivo Excel
+        function exportarExcel() {
+            const workbook = XLSX.utils.book_new();    // Crear un nuevo libro de Excel
+            const data = [];
+
+            // Agregar las cabeceras como primera fila del archivo Excel
+            data.push(cabeceras.map(c => c.nombre));
+
+            // Recopilar los datos de cada fila de la tabla
+            document.querySelectorAll("#cuerpo tr").forEach(fila => {
+                const filaDatos = Array.from(fila.querySelectorAll("input")).map(input => input.value);
+
+                // Validar que todos los campos estén completos antes de exportar
+                if (filaDatos.includes("")) {
+                    alert("Todos los campos deben estar completos antes de exportar.");
+                    return;
+                }
+
+                data.push(filaDatos);  // Agregar los datos de la fila al array de datos
+            });
+
+            // Crear la hoja de Excel y descargar el archivo
+            const hoja = XLSX.utils.aoa_to_sheet(data);
+            XLSX.utils.book_append_sheet(workbook, hoja, "Datos");
+            XLSX.writeFile(workbook, "datos_formulario.xlsx");
+        }
+    </script>
+
+</body>
+</html>

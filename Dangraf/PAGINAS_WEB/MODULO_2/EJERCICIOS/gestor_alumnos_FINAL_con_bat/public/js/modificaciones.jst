@@ -1,0 +1,107 @@
+document.addEventListener('DOMContentLoaded', function () {
+    let alumnoSeleccionado = null;
+
+    // Función accesible globalmente desde HTML
+    window.buscarMod = function () {
+        const criterio = document.getElementById('busquedaMod').value.toLowerCase();
+        fetch('/alumnos')
+            .then(res => res.json())
+            .then(data => {
+                const lista = document.getElementById('listaMod');
+                lista.innerHTML = '';
+
+                const filtrados = data.filter(a =>
+                    a.nombre?.toLowerCase().includes(criterio) ||
+                    a.apellidos?.toLowerCase().includes(criterio)
+                );
+
+                filtrados.forEach(a => {
+                    const li = document.createElement('li');
+                    li.textContent = `Nombre: ${a.nombre} ${a.apellidos}`;
+                    li.onclick = () => rellenarFormulario(a);
+                    lista.appendChild(li);
+                });
+            })
+            .catch(err => {
+                console.error("Error al cargar alumnos:", err);
+                alert("No se pudieron cargar los alumnos.");
+            });
+    };
+
+    // Función para convertir fechas ISO a "yyyy-MM-dd" (formato aceptado por <input type="date">)
+    function formatearFecha(fechaISO) {
+        const fecha = new Date(fechaISO);
+        const año = fecha.getFullYear();
+        const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+        const dia = String(fecha.getDate()).padStart(2, '0');
+        return `${año}-${mes}-${dia}`;
+    }
+
+    function rellenarFormulario(alumno) {
+        alumnoSeleccionado = alumno;
+
+        document.getElementById('modForm').style.display = 'block';
+        document.getElementById('mod_nombre').value = alumno.nombre || '';
+        document.getElementById('mod_apellidos').value = alumno.apellidos || '';
+        document.getElementById('mod_direccion').value = alumno.direccion || '';
+        document.getElementById('mod_alergias').value = alumno.alergias || '';
+        document.getElementById('mod_vacunas').value = alumno.vacunas || '';
+        document.getElementById('mod_enfermedades').value = alumno.enfermedades || '';
+        document.getElementById('mod_padre').value = alumno.padre_nomape || '';
+        document.getElementById('mod_madre').value = alumno.madre_nomape || '';
+        document.getElementById('mod_situacion').value = alumno.situacion || '';
+
+     /*   document.getElementById('mod_fecha_nac').value = alumno.fecha_nac ? formatearFecha(alumno.fecha_nac) : '';
+        document.getElementById('mod_fecha_alta').value = alumno.fecha_alta ? formatearFecha(alumno.fecha_alta) : ''; */
+        document.getElementById('mod_fecha_nac').value = alumno.fecha_nac  || '';
+        document.getElementById('mod_fecha_alta').value = alumno.fecha_alta 
+    }
+
+    // Envío del formulario
+    document.getElementById('modForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (!alumnoSeleccionado) return;
+
+        // Convertimos fechas al formato dd/mm/yyyy para el servidor
+        function convertirFechaFormatoEsp(fecha) {
+            const [año, mes, dia] = fecha.split('-');
+            return `${dia}/${mes}/${año}`;
+        };
+
+        const datos = {
+            nombre: document.getElementById('mod_nombre').value,
+            apellidos: document.getElementById('mod_apellidos').value,
+            fecha_nac: convertirFechaFormatoEsp(document.getElementById('mod_fecha_nac').value), 
+            direccion: document.getElementById('mod_direccion').value,
+            fecha_alta: convertirFechaFormatoEsp(document.getElementById('mod_fecha_alta').value), 
+            alergias: document.getElementById('mod_alergias').value,
+            vacunas: document.getElementById('mod_vacunas').value,
+            enfermedades: document.getElementById('mod_enfermedades').value,
+            padre_nomape: document.getElementById('mod_padre').value,
+            madre_nomape: document.getElementById('mod_madre').value,
+            situacion: document.getElementById('mod_situacion').value
+        };
+
+        const res = await fetch('/alumnos/modificar_por_nombre_apellidos', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                identificador: {
+                    nombre: alumnoSeleccionado.nombre,
+                    apellidos: alumnoSeleccionado.apellidos
+                },
+                datos: datos
+            })
+        });
+
+        if (res.ok) {
+            alert('Alumno modificado correctamente');
+            location.reload();
+        } else {
+            const errorText = await res.text();
+            console.error('Error al modificar:', errorText);
+            alert('Error al modificar: ' + errorText);
+        }
+    });
+});
+

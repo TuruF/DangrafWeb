@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imagen de Fondo</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+<style>
+    /* Establecer la imagen de fondo en el body */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* Asegura que la imagen cubra toda la altura de la ventana */
+      background-image: url('imagen.jpg'); /* Ruta de la imagen */
+      background-size: cover; /* Hace que la imagen cubra todo el fondo */
+      background-position: center; /* Centra la imagen */
+      background-repeat: no-repeat; /* Evita que la imagen se repita */
+    }
+
+    /* Estilos para el contenido */
+    .contenido {
+      color: white;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }    
+</style>    
+</head>
+<body>
+  <div class="contenido">
+    <h1>Bienvenido a mi página web</h1>
+    <p>Esta es una página con una imagen de fondo.</p>
+  </div>
+</body>
+</html>
