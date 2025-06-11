@@ -67,18 +67,21 @@ document.addEventListener("DOMContentLoaded", function () {
 	const buttons = document.querySelectorAll('div.btn, div.fin');
 
 	buttons.forEach(button => {
-		button.addEventListener("click", function (e) {
-			e.preventDefault(); // evitar navegación
+		button.addEventListener("click", function () {
 
 			const group = this.getAttribute("data-group");
+			const isSelected = this.classList.contains("selected");
 
 			// Deseleccionar todos los botones del grupo
 			document.querySelectorAll(`div[data-group="${group}"]`).forEach(btn => {
 				btn.classList.remove("selected");
 			});
 
-			// Seleccionar el botón clicado
-			this.classList.add("selected");
+			// Seleccionar el botón clicado 
+			if (!isSelected) {
+				this.classList.add("selected");
+			}
+			// Para deseleccionar el botón clicado
 		});
 	});
 });

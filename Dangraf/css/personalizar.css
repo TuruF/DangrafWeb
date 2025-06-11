@@ -256,6 +256,7 @@ button:hover {
 
 .color {
     display: inline-flex;
+    white-space: normal;
     gap: 10px;
     padding: 10px;
 }
@@ -467,7 +468,6 @@ footer a {
     .container {
         flex-direction: column;
         flex: 1;
-        max-width: 100%;
         padding: 10px 0;
     }
 
@@ -528,7 +528,6 @@ footer a {
     .container {
         flex-direction: column;
         flex: 1;
-        max-width: 100%;
         padding: 10px;
     }
 }

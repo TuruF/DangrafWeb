@@ -112,10 +112,10 @@ aside {
 }
 
 iframe {
-  width: 100%;
-  height: 50%;
-  border: 2px solid #ccc;
-  background: white;
+	width: 100%;
+  	height: 50%;
+  	border: 2px solid #ccc;
+  	background: white;
 }
 
 main {
@@ -150,6 +150,7 @@ button:hover {
     gap: 20px;
     justify-content: center;
 	align-items: center;
+	min-height: 100%;
 }
     
 .formulario { 
@@ -279,7 +280,7 @@ button:hover {
 }
 
 .btn:hover .cara {
-  filter: brightness(0%) grayscale(100%);
+  	filter: brightness(0%) grayscale(100%);
 }
 
 .fin {
@@ -304,7 +305,7 @@ button:hover {
 }
 
 .fin:hover .cara {
-  filter: brightness(0%) grayscale(100%);
+  	filter: brightness(0%) grayscale(100%);
 }
 
 hr {
@@ -364,19 +365,14 @@ footer a {
         background-color: #90E0EF;
     }
 
-    .ventana-content {
-        width: 90%;
-        margin: 40% auto;
-    }
-
-	section, aside {
-        flex: 1;
+	aside {
+        width: 95%;
 		padding: 20px;
 		margin-top: 20px;
     }
 
 	.formulario {
-		width: 100%;
+		width: 95%;
 		height: auto;
 		margin-bottom: 20px;
 		padding: 20px;
@@ -427,15 +423,15 @@ footer a {
         background-color: #90E0EF;
     }
 
-    .ventana-content {
+	aside {
         width: 90%;
-        margin: 40% auto;
+		margin-top: 20px;
     }
 
-
-	aside, section {
-		flex: 1;
-		padding: 5px;
-		margin: 10px;
-    }
+	.formulario {
+		width: 90%;
+		height: auto;
+		padding: 20px;
+		margin-bottom: 10px;
+  	}
 }
