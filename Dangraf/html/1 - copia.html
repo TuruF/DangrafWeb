@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda</title>
+  <link rel="icon" href="../img/logo4.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sansita:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+* {
+    padding: 0;
+	  margin: 0;
+	  box-sizing: border-box;
+	  font-family: "Sansita", sans-serif;
+	  font-size: 18px;
+	  font-weight: 400;
+}
+
+* h3 {
+	  font-family: "Bebas Neue", sans-serif;
+	  font-size: 30px;
+    text-align: center;
+}
+
+html, body {
+	  background-color: #FFF6EE;
+	  height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+header {
+	  background-color: #48CAE4;
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  padding: 5px 0 5px 50px;
+	  z-index: 1500;
+}
+
+.menu {
+	  align-self:flex-end; /*Alinea un elemento flex a lo largo del eje tranversal, anulando el valor de align-items*/
+}
+
+nav {
+	  display: flex;
+	  align-items: center;
+}
+
+nav a {
+	  text-decoration: none;
+	  color: black;
+	  padding: 10px;
+	  transition: all 0.3s;
+	  display: inline-flex;
+    align-items: center;
+}
+
+nav a:hover {
+	  background-color: #0096C7;
+	  border-radius: 5px;
+}
+
+.banner img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.active {
+	  background-color: #0096C7;
+	  border-radius: 5px;
+	  pointer-events: none;
+}
+
+.navegar {
+	  margin-right: 100px;
+}
+
+.ico {
+	  padding-right: 20px;
+}
+
+.contador {
+    display: none;
+    position: absolute;
+    top: -6px;
+    left: 22px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.icon {
+	  position: relative;
+    border-radius: 50%;
+	  padding: 10px;
+	  margin-right: 10px;
+	  display: inline-flex;
+	  align-items: center;
+	  border: 2px solid #03045E;
+	  cursor: pointer;
+}
+
+.icon:hover {
+	  background-color: #0096C7;
+}
+
+.container {
+	  display: flex;
+	  flex-wrap: wrap;
+}
+
+.foto {
+	  display: grid;
+	  grid-template-columns: repeat(4, 1fr);
+	  gap: 10px;
+	  align-items: center;
+	  margin-top: 10px;
+}
+
+.foto img {
+	  width: 300px;
+	  max-height: 200px;
+	  padding: 10px;
+	  object-fit: contain;
+	  background-image: url("../img/madera.jpg");
+	  background-size: cover;
+	  border-radius: 10px;
+}
+
+.item {
+	  border-radius: 5px;
+	  text-align: center;
+	  padding: 10px;
+}
+
+.detalles {
+	  display: inline-block; 
+    margin-top: 10px; 
+    padding: 10px 20px; 
+	  background-color: #023E8A;
+    color: white; 
+	  border: 2px solid #023E8A;
+    text-decoration: none; 
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.detalles:hover {
+	  background-color: #0096C7;
+	  color: black;
+}
+
+.agregar-carrito {
+    display: inline-block; 
+    margin-top: 10px; 
+    padding: 10px 20px; 
+	  background-color: #023E8A;
+    color: white; 
+	  border: 2px solid #023E8A;
+    text-decoration: none; 
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.agregar-carrito:hover {
+	  background-color: #0096C7;
+	  color: black;
+}
+
+#checkout {
+    display: block; 
+    margin: 10px auto 0 auto; 
+    padding: 10px 20px; 
+	  background-color: #023E8A;
+    color: white; 
+	  border: 2px solid #023E8A;
+    text-decoration: none; 
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#checkout:hover {
+    background-color: #0096C7;
+	  color: black;
+}
+
+.ventana {
+  	display: none;
+	  position: fixed;
+	  z-index: 999;
+	  left: 0; 
+	  top: 0;
+  	width: 100%; 
+	  height: 100%;
+	  background-color: #FFF6EE;
+	  padding-top: 200px; /* ajusta según la altura de tu header */
+  	box-sizing: border-box;
+    border: 3px solid black;
+}
+
+.ventana-content {
+	  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #d86f13;
+	  border-radius: 8px;
+	  border: 2px solid black;
+	  padding: 10px;
+	  border-radius: 8px;
+	  width: 80%;
+    height: 700px;
+	  text-align: center;
+	  position: relative;
+	  top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
+
+.ventana-content img {
+    background-color: brown;
+    height: 100%;
+    max-height: 600px;
+    object-fit:cover;
+}
+
+.carro {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.carro-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.carro-content li {
+    border-bottom: 1px solid black;
+    list-style: none;
+    padding: 8px 0;
+}
+
+.carro-content p {
+    margin-top: 5px;
+}
+
+.close {
+	  align-self: flex-end;
+    float: right;
+	  color: red;
+	  font-size: 24px;
+	  cursor: pointer;
+	  margin-right: 10px;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.btn-mas, .btn-menos {
+    padding: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #023E8A;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.btn-mas:hover, .btn-menos:hover {
+    background-color: #0096C7;
+}
+
+footer {
+	  background-color: #48CAE4;
+	  padding: 10px;
+	  text-align: center;
+	  width: 100%;
+}
+
+footer a {
+	  text-decoration: none;
+	  color: black;
+}
+</style>
+
+</head>
+
+<body>
+  <header>
+    <div class="banner">
+      <img src="../img/banner.png" alt="Banner">
+    </div>
+
+    <div class="menu">
+      <nav>
+        <div class="navegar">
+          <a href="../index.html">Inicio</a> 
+          <a href="../html/print.html">Impresión</a>
+          <a href="#" class="active">Tienda</a>
+          <a href="../html/regalo.html">Regalos personalizados</a>
+          <a href="../html/contacto.html">Contacto</a>
+        </div>
+        <div class="ico">
+          <button type="button" class="icon"><img src="../img/carrito.png" alt="Cesta"><span class="contador">0</span></button>
+          <button type="button" class="icon" onclick="location.href='../html/login.html'"><img src="../img/usuario.png" alt="Usuario"></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <main>
+      <div class="foto">
+
+        <!-- Producto ejemplo -->
+        <div class="item">
+          <img src="../img/cuaderno.png" alt="Cuaderno">
+          <p>Cuaderno A4</p>
+          <button class="detalles"
+                  data-img="../img/cuaderno.png"
+                  data-titulo="Cuaderno A4"
+                  data-descripcion="Cuaderno tamaño A4 con 80 hojas, ideal para apuntes.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/cuaderno.png"
+                  data-titulo="Cuaderno A4"
+                  data-precio="3.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <div class="item">
+          <img src="../img/archivador.png" alt="Cuaderno">
+          <p>Archivador</p>
+          <button class="detalles"
+                  data-img="../img/archivador.png"
+                  data-titulo="Archivador"
+                  data-descripcion="Archivador de cartón forrado tamaño folio con anillas metálicas.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/archivador.png"
+                  data-titulo="Archivador"
+                  data-precio="5.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <div class="item">
+          <img src="../img/postit1.png" alt="Post-it">
+          <p>Post-it</p>
+          <button class="detalles"
+                  data-img="../img/postit1.png"
+                  data-titulo="Post-it"
+                  data-descripcion="Bloc de notas adhesivas multicolor, ideales para recordatorios.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/postit1.png"
+                  data-titulo="Post-it"
+                  data-precio="6.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <div class="item">
+          <img src="../img/marcador.png" alt="Marcador">
+          <p>Marcador</p>
+          <button class="detalles"
+                  data-img="../img/marcador.png"
+                  data-titulo="Marcador"
+                  data-descripcion="Marcadores de colores permanentes para escribir en diferentes superficies.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/marcador.png"
+                  data-titulo="Marcador"
+                  data-precio="3.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <div class="item">
+          <img src="../img/bolis.png" alt="Bolis">
+          <p>Bolis</p>
+          <button class="detalles"
+                  data-img="../img/bolis.png"
+                  data-titulo="Bolis"
+                  data-descripcion="Set de bolígrafos azul, negro y rojo con tinta suave.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/bolis.png"
+                  data-titulo="Bolis"
+                  data-precio="10.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <div class="item">
+          <img src="../img/lapices.png" alt="Lápices">
+          <p>Lápices</p>
+          <button class="detalles"
+                  data-img="../img/cuaderno.png"
+                  data-titulo="Lápices"
+                  data-descripcion="Lápices de grafito HB con goma, perfectos para dibujo o escritura.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/cuaderno.png"
+                  data-titulo="Lápices"
+                  data-precio="7.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <div class="item">
+          <img src="../img/gomas.png" alt="Gomas">
+          <p>Gomas</p>
+          <button class="detalles"
+                  data-img="../img/gomas.png"
+                  data-titulo="Gomas"
+                  data-descripcion="Gomas suaves para lápiz y tinta, no dejan residuos.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/gomas.png"
+                  data-titulo="Gomas"
+                  data-precio="4.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <div class="item">
+          <img src="../img/sacapuntas.png" alt="Sacapuntas">
+          <p>Sacapuntas</p>
+          <button class="detalles"
+                  data-img="../img/sacapuntas.png"
+                  data-titulo="Sacapuntas"
+                  data-descripcion="Sacapuntas doble para lápices estándar y jumbo.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/sacapuntas.png"
+                  data-titulo="Sacapuntas"
+                  data-precio="2.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <div class="item">
+          <img src="../img/tijeras.png" alt="Tijeras">
+          <p>Tijeras</p>
+          <button class="detalles"
+                  data-img="../img/tijeras.png"
+                  data-titulo="Tijeras"
+                  data-descripcion="Tijeras ergonómicas con hojas de acero inoxidable.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/tijeras.png"
+                  data-titulo="Tijeras"
+                  data-precio="3.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <div class="item">
+          <img src="../img/subrayador.png" alt="Subrayador">
+          <p>Subrayador</p>
+          <button class="detalles"
+                  data-img="../img/subrayador.png"
+                  data-titulo="Subrayador"
+                  data-descripcion="Set de subrayadores de colores pastel con tinta fluorescente.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/subrayador.png"
+                  data-titulo="Subrayador"
+                  data-precio="8.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <div class="item">
+          <img src="../img/rotuladores.png" alt="Rotuladores">
+          <p>Rotuladores</p>
+          <button class="detalles"
+                  data-img="../img/rotuladores.png"
+                  data-titulo="Rotuladores"
+                  data-descripcion="Rotuladores punta fina, perfectos para dibujos o anotaciones.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/rotuladores.png"
+                  data-titulo="Rotuladores"
+                  data-precio="15.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <div class="item">
+          <img src="../img/agenda.png" alt="Agenda">
+          <p>Agenda</p>
+          <button class="detalles"
+                  data-img="../img/agenda.png"
+                  data-titulo="Agenda"
+                  data-descripcion="Agenda anual con diseño moderno y espacio para notas.">
+            👁️ Ver más detalles
+          </button>
+          <button class="agregar-carrito"
+                  data-img="../img/agenda.png"
+                  data-titulo="Agenda"
+                  data-precio="20.50">
+            🛒 Agregar al carrito
+          </button>
+        </div>
+
+        <!-- Agrega más productos replicando el bloque de arriba y cambiando la info -->
+
+      </div>
+
+      <!-- Modal Detalles -->
+      <div id="ventana" class="ventana">
+        <div class="ventana-content">
+          <span class="close">&times;</span>
+          <h3 id="modal-titulo"></h3>
+          <img id="modal-img" src="" alt="Producto" />
+          <p id="modal-descripcion">Descripción del producto...</p>
+        </div>
+      </div>
+
+      <!-- Modal Carrito -->
+      <div id="carrito-modal" class="carro">
+        <div class="carro-content">
+          <h3>Tu carrito</h3>
+          <ul id="lista-carrito"></ul>
+          <p>Total: <span id="total">0.00€</span></p>
+          <button id="checkout">Finalizar compra</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Dangraf | Todos los derechos reservados | 
+      <a href="../html/datos.html" target="_blank">Política de privacidad</a> | 
+      <a href="../html/aviso.html" target="_blank">Aviso legal</a>
+    </p>
+  </footer>
+
+<script>
+  // Modal de detalles
+  document.querySelectorAll('.detalles').forEach(boton => {
+    boton.addEventListener('click', () => {
+      const titulo = boton.getAttribute('data-titulo');
+      const descripcion = boton.getAttribute('data-descripcion');
+      const imagen = boton.getAttribute('data-img');
+
+      document.getElementById('modal-titulo').textContent = titulo;
+      document.getElementById('modal-descripcion').textContent = descripcion;
+      document.getElementById('modal-img').src = imagen;
+
+      document.getElementById('ventana').style.display = 'block';
+    });
+  });
+
+  document.querySelector('.close').addEventListener('click', () => {
+    document.getElementById('ventana').style.display = 'none';
+  });
+
+  // Carrito de compras
+  let carrito = [];
+
+  function agregarAlCarrito(producto) {
+    const existente = carrito.find(item => item.titulo === producto.titulo);
+    if (existente) {
+      existente.cantidad++;
+    } else {
+      producto.cantidad = 1;
+      carrito.push(producto);
+    }
+    actualizarCarrito();
+  }
+
+  document.querySelectorAll('.agregar-carrito').forEach(boton => {
+    boton.addEventListener('click', () => {
+      const titulo = boton.getAttribute('data-titulo');
+      const precio = parseFloat(boton.getAttribute('data-precio'));
+      const img = boton.getAttribute('data-img');
+
+      agregarAlCarrito({ titulo, precio, img });
+    });
+  });
+
+  function actualizarCarrito() {
+    const lista = document.getElementById('lista-carrito');
+    lista.innerHTML = '';
+    let total = 0;
+    let cantidadTotal = 0;
+
+    carrito.forEach(item => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        ${item.titulo}
+        <button class="btn-menos" data-titulo="${item.titulo}">−</button>
+        <span class="cantidad">${item.cantidad}</span>
+        <button class="btn-mas" data-titulo="${item.titulo}">+</button>
+        = ${(item.precio * item.cantidad).toFixed(2)}€
+      `;
+      lista.appendChild(li);
+      total += item.precio * item.cantidad;
+      cantidadTotal += item.cantidad;
+    });
+
+    document.getElementById('total').textContent = total.toFixed(2);
+
+    // Actualizar contador visual
+    const contador = document.querySelector('.contador');
+    if (cantidadTotal > 0) {
+      contador.style.display = 'inline-block';
+      contador.textContent = cantidadTotal;
+    } else {
+      contador.style.display = 'none';
+    }
+  }
+
+  // Manejar botones dinámicos + y -
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('btn-mas')) {
+      const titulo = e.target.getAttribute('data-titulo');
+      const producto = carrito.find(item => item.titulo === titulo);
+      if (producto) {
+        producto.cantidad++;
+        actualizarCarrito();
+      }
+    }
+
+    if (e.target.classList.contains('btn-menos')) {
+      const titulo = e.target.getAttribute('data-titulo');
+      const producto = carrito.find(item => item.titulo === titulo);
+      if (producto) {
+        producto.cantidad--;
+        if (producto.cantidad <= 0) {
+          carrito = carrito.filter(item => item.titulo !== titulo);
+        }
+        actualizarCarrito();
+      }
+    }
+  });
+
+  // Abrir carrito
+  document.querySelector('.ico .icon img[alt="Cesta"]').parentNode.addEventListener('click', () => {
+    document.getElementById('carrito-modal').style.display = 'block';
+  });
+
+  // Cerrar carrito haciendo clic fuera
+  document.getElementById('carrito-modal').addEventListener('click', function (event) {
+    const contenido = document.querySelector('.carro-content');
+    if (!contenido.contains(event.target)) {
+      this.style.display = 'none';
+    }
+  });
+
+  // Finalizar compra
+  document.getElementById('checkout').addEventListener('click', () => {
+    if (carrito.length === 0) {
+      alert('Tu carrito está vacío.');
+    } else {
+      alert('¡Gracias por tu compra!');
+      carrito = [];
+      actualizarCarrito();
+      document.getElementById('carrito-modal').style.display = 'none';
+    }
+  });
+</script>
+
+
+</body>
+</html>

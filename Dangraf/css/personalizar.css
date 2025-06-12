@@ -103,7 +103,6 @@ nav a:hover {
     padding: 2px 6px;
     border-radius: 50%;
     text-align: center;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
 
 button {
@@ -289,17 +288,6 @@ button:hover {
 .carrito:hover {
 	background-color: #0096C7;
 	color: black;
-}
-
-#contador {
-    text-align: center;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f4f4f4;
-    margin: 0 5px;
 }
 
 .info {

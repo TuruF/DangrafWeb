@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Prueba Contador</title>
+  <style>
+    .icon {
+      position: relative;
+      border: 2px solid black;
+      padding: 10px;
+      display: inline-block;
+    }
+
+    .contador {
+      position: absolute;
+      top: -6px;
+      left: 22px;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 50%;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="carrito-btn" class="icon">
+    <img src="https://via.placeholder.com/40" alt="Cesta">
+    <span class="contador">0</span>
+  </button>
+
+  <button id="agregar">Agregar al carrito</button>
+
+  <script>
+    let carrito = [];
+    const contador = document.querySelector('.contador');
+
+    document.getElementById('agregar').addEventListener('click', () => {
+      carrito.push("producto");
+      contador.style.display = 'inline-block';
+      contador.textContent = carrito.length;
+    });
+  </script>
+
+</body>
+</html>
