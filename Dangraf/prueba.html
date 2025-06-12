@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calendario Copistería Responsive</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 20px;
+      background: white;
+      color: #333;
+    }
+
+    .calendario-mensual {
+      max-width: 1000px;
+      margin: auto;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #004aad;
+      padding-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    header img.logo {
+      width: 100px;
+    }
+
+    header h1 {
+      font-size: 1.8em;
+      color: #004aad;
+      margin: 0;
+    }
+
+    .selector {
+      margin-top: 10px;
+    }
+
+    .selector select, .selector input[type="file"] {
+      font-size: 16px;
+      padding: 6px;
+      margin-left: 5px;
+    }
+
+    .contenido-principal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .imagen-del-mes {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .imagen-del-mes img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    }
+
+    .tabla-calendario {
+      flex: 1 1 400px;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      min-width: 280px;
+    }
+
+    .dia-header {
+      background-color: #004aad;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .dia {
+      border: 1px solid #ccc;
+      min-height: 80px;
+      text-align: right;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .festivo {
+      background-color: #ffebeb;
+      color: #b30000;
+      font-weight: bold;
+    }
+
+    footer {
+      border-top: 2px solid #004aad;
+      margin-top: 20px;
+      padding-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .contenido-principal {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 1.5em;
+      }
+    }
+
+    @media print {
+      body { margin: 0; }
+      .calendario-mensual { box-shadow: none; border: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calendario-mensual">
+    <header>
+      <img src="logo-copisteria.png" alt="Copistería Logo" class="logo">
+      <div>
+        <h1 id="titulo-mes">Junio 2025</h1>
+        <div class="selector">
+          <label>Mes:
+            <select id="mes"></select>
+          </label>
+          <label>Año:
+            <select id="anio"></select>
+          </label>
+          <input type="file" id="subir-imagen" accept="image/*">
+        </div>
+      </div>
+    </header>
+
+    <div class="contenido-principal">
+      <div class="tabla-calendario" id="tabla-calendario"></div>
+      <div class="imagen-del-mes">
+        <img id="imagen-mes" src="https://via.placeholder.com/300x200?text=Sin+imagen" alt="Imagen del mes">
+      </div>
+    </div>
+
+    <footer>
+      <p>Copistería Dani · Calle Imprenta 123 · www.copisteriadani.com · Tel: 123 456 789</p>
+    </footer>
+  </div>
+
+  <script>
+    const meses = [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+    const diasSemana = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+    const imagenesPersonalizadas = {};
+
+    const tabla = document.getElementById("tabla-calendario");
+    const selectMes = document.getElementById("mes");
+    const selectAnio = document.getElementById("anio");
+    const titulo = document.getElementById("titulo-mes");
+    const imagen = document.getElementById("imagen-mes");
+    const inputImagen = document.getElementById("subir-imagen");
+
+    function rellenarOpciones() {
+      meses.forEach((m, i) => {
+        const op = document.createElement("option");
+        op.value = i;
+        op.textContent = m;
+        selectMes.appendChild(op);
+      });
+
+      const añoActual = new Date().getFullYear();
+      for (let y = añoActual - 1; y <= añoActual + 3; y++) {
+        const op = document.createElement("option");
+        op.value = y;
+        op.textContent = y;
+        selectAnio.appendChild(op);
+      }
+
+      selectMes.value = 5;
+      selectAnio.value = 2025;
+    }
+
+    function getClaveMes(mes, anio) {
+      return `${anio}-${String(mes + 1).padStart(2, "0")}`;
+    }
+
+    function mostrarImagen(mes, anio) {
+      const clave = getClaveMes(mes, anio);
+      imagen.src = imagenesPersonalizadas[clave] || "https://via.placeholder.com/300x200?text=Sin+imagen";
+    }
+
+    function generarCalendario(anio, mes) {
+      tabla.innerHTML = "";
+      diasSemana.forEach(d => {
+        const head = document.createElement("div");
+        head.className = "dia-header";
+        head.textContent = d;
+        tabla.appendChild(head);
+      });
+
+      const primerDia = new Date(anio, mes, 1).getDay();
+      const offset = (primerDia + 6) % 7;
+      const totalDias = new Date(anio, mes + 1, 0).getDate();
+
+      for (let i = 0; i < offset; i++) {
+        tabla.appendChild(document.createElement("div")).className = "dia";
+      }
+
+      for (let d = 1; d <= totalDias; d++) {
+        const div = document.createElement("div");
+        div.className = "dia";
+        const diaSemana = new Date(anio, mes, d).getDay();
+        if (diaSemana === 0 || diaSemana === 6) div.classList.add("festivo");
+        div.textContent = d;
+        tabla.appendChild(div);
+      }
+
+      titulo.textContent = `${meses[mes]} ${anio}`;
+      mostrarImagen(mes, anio);
+    }
+
+    inputImagen.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const clave = getClaveMes(+selectMes.value, +selectAnio.value);
+        imagenesPersonalizadas[clave] = event.target.result;
+        mostrarImagen(+selectMes.value, +selectAnio.value);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    selectMes.addEventListener("change", () => {
+      generarCalendario(+selectAnio.value, +selectMes.value);
+    });
+
+    selectAnio.addEventListener("change", () => {
+      generarCalendario(+selectAnio.value, +selectMes.value);
+    });
+
+    rellenarOpciones();
+    generarCalendario(2025, 5);
+  </script>
+
+</body>
+</html>

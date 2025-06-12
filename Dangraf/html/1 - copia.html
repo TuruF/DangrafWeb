@@ -290,19 +290,14 @@ nav a:hover {
 }
 
 .btn-mas, .btn-menos {
-    padding: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: #023E8A;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    text-align: center;
+    background: none;
+  border: none;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 0 10px;
 }
 
-.btn-mas:hover, .btn-menos:hover {
-    background-color: #0096C7;
-}
+
 
 footer {
 	  background-color: #48CAE4;
@@ -570,7 +565,7 @@ footer a {
         <div class="carro-content">
           <h3>Tu carrito</h3>
           <ul id="lista-carrito"></ul>
-          <p>Total: <span id="total">0.00€</span></p>
+          <p>Total: <span id="total">0.00</span>€</p>
           <button id="checkout">Finalizar compra</button>
         </div>
       </div>
@@ -639,9 +634,9 @@ footer a {
       const li = document.createElement('li');
       li.innerHTML = `
         ${item.titulo}
-        <button class="btn-menos" data-titulo="${item.titulo}">−</button>
+        <button class="btn-menos" data-titulo="${item.titulo}"><img src="../img/menos.png" alt="Quitar uno"></button>
         <span class="cantidad">${item.cantidad}</span>
-        <button class="btn-mas" data-titulo="${item.titulo}">+</button>
+        <button class="btn-mas" data-titulo="${item.titulo}"><img src="../img/mas.png" alt="Sumar uno"></button>
         = ${(item.precio * item.cantidad).toFixed(2)}€
       `;
       lista.appendChild(li);
@@ -663,27 +658,30 @@ footer a {
 
   // Manejar botones dinámicos + y -
   document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('btn-mas')) {
-      const titulo = e.target.getAttribute('data-titulo');
-      const producto = carrito.find(item => item.titulo === titulo);
-      if (producto) {
-        producto.cantidad++;
-        actualizarCarrito();
-      }
-    }
+  const botonMas = e.target.closest('.btn-mas');
+  const botonMenos = e.target.closest('.btn-menos');
 
-    if (e.target.classList.contains('btn-menos')) {
-      const titulo = e.target.getAttribute('data-titulo');
-      const producto = carrito.find(item => item.titulo === titulo);
-      if (producto) {
-        producto.cantidad--;
-        if (producto.cantidad <= 0) {
-          carrito = carrito.filter(item => item.titulo !== titulo);
-        }
-        actualizarCarrito();
-      }
+  if (botonMas) {
+    const titulo = botonMas.getAttribute('data-titulo');
+    const producto = carrito.find(item => item.titulo === titulo);
+    if (producto) {
+      producto.cantidad++;
+      actualizarCarrito();
     }
-  });
+  }
+
+  if (botonMenos) {
+    const titulo = botonMenos.getAttribute('data-titulo');
+    const producto = carrito.find(item => item.titulo === titulo);
+    if (producto) {
+      producto.cantidad--;
+      if (producto.cantidad <= 0) {
+        carrito = carrito.filter(item => item.titulo !== titulo);
+      }
+      actualizarCarrito();
+    }
+  }
+});
 
   // Abrir carrito
   document.querySelector('.ico .icon img[alt="Cesta"]').parentNode.addEventListener('click', () => {
