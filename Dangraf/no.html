@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Excel a PDF en Web</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #excel-data table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    #excel-data th, #excel-data td {
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      text-align: left;
+    }
+    #export-pdf {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Cargar Excel y exportar a PDF</h2>
+
+  <input type="file" id="input-excel" accept=".xlsx,.xls" />
+  <div id="excel-data" style="margin-top: 20px;"></div>
+
+  <button id="export-pdf" disabled>Exportar a PDF</button>
+
+  <!-- Librerías -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script>
+    const inputExcel = document.getElementById('input-excel');
+    const excelDataDiv = document.getElementById('excel-data');
+    const exportPdfBtn = document.getElementById('export-pdf');
+
+    let pdfContentLoaded = false;
+
+    inputExcel.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const data = new Uint8Array(event.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+
+        // Obtener la primera hoja
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+
+        // Convertir la hoja a HTML
+        const html = XLSX.utils.sheet_to_html(worksheet);
+
+        excelDataDiv.innerHTML = html;
+
+        // Habilitar botón exportar
+        exportPdfBtn.disabled = false;
+        pdfContentLoaded = true;
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
+
+    exportPdfBtn.addEventListener('click', () => {
+      if (!pdfContentLoaded) return;
+
+      html2canvas(excelDataDiv).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+
+        const pdf = new jspdf.jsPDF('p', 'pt', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('excel-export.pdf');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nóminas del Personal</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  <style>
+    body { font-family: Arial; margin: 30px; background: #f9f9f9; }
+    h1 { text-align: center; }
+    table { width: 100%; border-collapse: collapse; background: #fff; margin-top: 20px; text-align: center;}
+    th, td { padding: 10px; border: 1px solid #ccc; }
+    th { background: #007bff; color: #fff; }
+    select, button { margin: 10px 5px; padding: 6px; }
+    tr:nth-child(even) { background: #f1f1f1; }
+  </style>
+</head>
+<body>
+
+<h1>Nóminas del Personal</h1>
+
+<!-- Filtros -->
+<label>Filtrar por turno:
+  <select id="filtroTurno">
+    <option value="">Todos</option>
+    <option value="Mañana">Mañana</option>
+    <option value="Tarde">Tarde</option>
+  </select>
+</label>
+<label>Filtrar por puesto:
+  <select id="filtroPuesto">
+    <option value="">Todos</option>
+    <option value="Director">Director</option>
+    <option value="Educadora Infantil">Educadora Infantil</option>
+    <option value="Pedagoga Infantil">Pedagoga Infantil</option>
+    <option value="Auxiliar">Auxiliar</option>
+    <option value="Cocinero">Cocinero</option>
+  </select>
+</label>
+<button onclick="exportarExcel()">Exportar Excel</button>
+
+<table id="tablaNominas">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Puesto</th>
+      <th>Turno</th>
+      <th>Fecha Incorporación</th>
+      <th>Antigüedad</th>
+      <th>Salario (€)</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="cuerpoTabla"></tbody>
+</table>
+
+<script>
+const empleados = [
+    { nombre: "Paula", apellidos: "Díaz Martín", dni: "98765432A", telefono: "651234567", email: "paula.diaz@example.com", direccion: "Calle Estrella 7", puesto: "Educadora Infantil", iban: "ES32 1234 5678 9012 3456 7890", turno: "Mañana", observaciones: "Ninguno", incorporacion: "2023-01-10" },
+    { nombre: "Luis", apellidos: "González Reyes", dni: "87654321B", telefono: "689654123", email: "luis.gonzalez@example.com", direccion: "Calle Árbol 10", puesto: "Auxiliar", iban: "ES32 9876 5432 1098 7654 3210", turno: "Tarde", observaciones: "Ninguno", incorporacion: "2022-09-05" },
+    { nombre: "Sara", apellidos: "Martín Pérez", dni: "76543210C", telefono: "634567890", email: "sara.martin@example.com", direccion: "Calle Sol 3", puesto: "Pedagoga Infantil", iban: "ES32 1122 3344 5566 7788 9900", turno: "Mañana", observaciones: "Ninguno", incorporacion: "2021-06-18" },
+    { nombre: "David", apellidos: "Fernández Lopez", dni: "65432109D", telefono: "612345678", email: "david.fernandez@example.com", direccion: "Calle Rosa 5", puesto: "Director", iban: "ES32 8765 4321 2345 6789 1234", turno: "Mañana", observaciones: "Ninguno", incorporacion: "2020-03-25" },
+    { nombre: "Raquel", apellidos: "Sánchez González", dni: "54321098E", telefono: "699876543", email: "raquel.sanchez@example.com", direccion: "Calle Luna 2", puesto: "Educadora Infantil", iban: "ES32 5678 9101 1121 3141 5161", turno: "Tarde", observaciones: "Ninguno", incorporacion: "2022-11-02" },
+    { nombre: "Antonio", apellidos: "López Martínez", dni: "43210987F", telefono: "622233445", email: "antonio.lopez@example.com", direccion: "Calle Mar 18", puesto: "Cocinero", iban: "ES32 2345 6789 1122 3344 5566", turno: "Mañana", observaciones: "Alergias alimentarias", incorporacion: "2021-05-15" },
+    { nombre: "Elena", apellidos: "Ruiz García", dni: "32109876G", telefono: "635442677", email: "elena.ruiz@example.com", direccion: "Calle Verde 21", puesto: "Educadora Infantil", iban: "ES32 6789 2345 6789 5678 1234", turno: "Tarde", observaciones: "Ninguno", incorporacion: "2023-02-28" }
+];
+
+const salarios = {
+    "Director": 2170.60,
+    "Educadora Infantil": 1153.19,
+    "Pedagoga Infantil": 1399.55,
+    "Auxiliar": 1143.10,
+    "Cocinero": 1421.46
+};
+
+const cuerpoTabla = document.getElementById("cuerpoTabla");
+
+function calcularAntiguedad(fecha) {
+  const hoy = new Date();
+  const inicio = new Date(fecha);
+
+  let años = hoy.getFullYear() - inicio.getFullYear();
+  let meses = hoy.getMonth() - inicio.getMonth();
+  let dias = hoy.getDate() - inicio.getDate();
+
+  if (dias < 0) {
+    meses--;
+    // Para obtener días correctos, restamos uno al mes y sumamos los días del mes anterior
+    const ultimoDiaMesAnterior = new Date(hoy.getFullYear(), hoy.getMonth(), 0).getDate();
+    dias += ultimoDiaMesAnterior;
+  }
+
+  if (meses < 0) {
+    años--;
+    meses += 12;
+  }
+
+  return `${años} años, ${meses} meses y ${dias} días`;
+}
+
+function renderTabla() {
+    cuerpoTabla.innerHTML = "";
+    const turno = document.getElementById("filtroTurno").value;
+    const puesto = document.getElementById("filtroPuesto").value;
+
+    empleados.forEach(emp => {
+      if ((turno && emp.turno !== turno) || (puesto && emp.puesto !== puesto)) return;
+
+      const antiguedad = calcularAntiguedad(emp.incorporacion);
+      const salario = salarios[emp.puesto] || 0;
+
+      const fila = document.createElement("tr");
+      fila.innerHTML = `
+        <td>${emp.nombre}</td>
+        <td>${emp.apellidos}</td>
+        <td>${emp.puesto}</td>
+        <td>${emp.turno}</td>
+        <td>${emp.incorporacion}</td>
+        <td>${antiguedad}</td>
+        <td>${salario}</td>
+        <td><button onclick="generarPDF(${JSON.stringify(emp).replace(/"/g, '&quot;')})">PDF</button></td>
+      `;
+      cuerpoTabla.appendChild(fila);
+    });
+}
+
+  function exportarExcel() {
+  // Crear una hoja de cálculo a partir de los datos filtrados
+  const turno = document.getElementById("filtroTurno").value;
+  const puesto = document.getElementById("filtroPuesto").value;
+
+  // Filtrar empleados según los filtros
+  const datosFiltrados = empleados.filter(emp => {
+    if (turno && emp.turno !== turno) return false;
+    if (puesto && emp.puesto !== puesto) return false;
+    return true;
+  }).map(emp => ({
+    Nombre: emp.nombre,
+    Apellidos: emp.apellidos,
+    Puesto: emp.puesto,
+    Turno: emp.turno,
+    "Fecha Incorporación": emp.incorporacion,
+    Antigüedad: calcularAntiguedad(emp.incorporacion) + " años",
+    "Salario (€)": salarios[emp.puesto] || 0
+  }));
+
+  // Crear libro y hoja
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.json_to_sheet(datosFiltrados);
+
+  XLSX.utils.book_append_sheet(wb, ws, "Nóminas");
+
+  // Descargar archivo
+  XLSX.writeFile(wb, "nominas.xlsx");
+}
+
+async function generarPDF(emp) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(14);
+    doc.text("Nómina del Empleado", 14, 20);
+    doc.setFontSize(12);
+
+    const antiguedad = calcularAntiguedad(emp.incorporacion);
+    const salario = salarios[emp.puesto] || 0;
+
+    const lines = [
+    `Nombre: ${emp.nombre} ${emp.apellidos}`,
+    `DNI: ${emp.dni}`,
+    `Teléfono: ${emp.telefono}`,
+    `Email: ${emp.email}`,
+    `Dirección: ${emp.direccion}`,
+    `Puesto: ${emp.puesto}`,
+    `IBAN: ${emp.iban}`,
+    `Turno: ${emp.turno}`,
+    `Observaciones: ${emp.observaciones}`,
+    `Fecha Incorporación: ${emp.incorporacion}`,
+    `Antigüedad: ${antiguedad}`,
+    `Salario Mensual: ${salario} €`
+    ];
+
+    let y = 30;
+    lines.forEach(line => {
+    doc.text(line, 14, y);
+    y += 10;
+    });
+
+    doc.save(`nomina_${emp.nombre}_${emp.apellidos}.pdf`);
+}
+
+// Eventos para filtros
+document.getElementById("filtroTurno").addEventListener("change", renderTabla);
+document.getElementById("filtroPuesto").addEventListener("change", renderTabla);
+
+// Render inicial
+renderTabla();
+</script>
+
+</body> 
+</html>
