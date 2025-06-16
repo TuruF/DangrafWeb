@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 * {
-	padding: 0;
+    padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 	font-family: "Sansita", sans-serif;
@@ -12,6 +12,7 @@
 * h3 {
 	font-family: "Bebas Neue", sans-serif;
 	font-size: 30px;
+    text-align: center;
 }
 
 html, body {
@@ -22,7 +23,7 @@ html, body {
 }
 
 main {
-      flex: 1;
+    flex: 1;
 }
 
 header {
@@ -87,8 +88,23 @@ nav a:hover {
 	padding-right: 20px;
 }
 
-button {
-	border-radius: 50%;
+.contador {
+    display: none;
+    position: absolute;
+    top: -6px;
+    left: 22px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.icon {
+	position: relative;
+    border-radius: 50%;
 	padding: 10px;
 	margin-right: 10px;
 	display: inline-flex;
@@ -97,7 +113,7 @@ button {
 	cursor: pointer;
 }
 
-button:hover {
+.icon:hover {
 	background-color: #0096C7;
 }
 
@@ -139,10 +155,52 @@ button:hover {
 	border: 2px solid #023E8A;
     text-decoration: none; 
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .detalles:hover {
 	background-color: #0096C7;
+	color: black;
+}
+
+.agregar-carrito {
+    display: inline-block; 
+    margin-top: 10px; 
+    padding: 10px 20px; 
+	background-color: #023E8A;
+    color: white; 
+	border: 2px solid #023E8A;
+    text-decoration: none; 
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.agregar-carrito:hover {
+	background-color: #0096C7;
+	color: black;
+}
+
+#checkout {
+    display: block; 
+    margin: 10px auto 0 auto; 
+    padding: 10px 20px; 
+	background-color: #023E8A;
+    color: white; 
+	border: 2px solid #023E8A;
+    text-decoration: none; 
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#checkout img {
+    width: 24px;
+    height: 34px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#checkout:hover {
+    background-color: #0096C7;
 	color: black;
 }
 
@@ -152,7 +210,7 @@ button:hover {
 	z-index: 999;
 	left: 0; 
 	top: 0;
-	width: 100%; 
+  	width: 100%; 
 	height: 100%;
 	background-color: #FFF6EE;
 	padding-top: 200px; /* ajusta según la altura de tu header */
@@ -186,6 +244,37 @@ button:hover {
     object-fit:cover;
 }
 
+.carro {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.carro-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.carro-content li {
+    border-bottom: 1px solid black;
+    list-style: none;
+    padding: 8px 0;
+}
+
+.carro-content p {
+    margin-top: 5px;
+}
+
 .close {
 	align-self: flex-end;
     float: right;
@@ -197,6 +286,14 @@ button:hover {
 
 .no-scroll {
     overflow: hidden;
+}
+
+.btn-mas, .btn-menos {
+    background: none;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 0 10px;
 }
 
 footer {
@@ -249,16 +346,26 @@ footer a {
         background-color: #90E0EF;
     }
 
-	.container {
-        flex: 1;
-		height: auto;
-        padding: 20px;
-    }
-
 	.foto {
 		grid-template-columns: 1fr;
 	}
+
+	.ventana-content {
+		width: 90%;
+		height: 500px;
+  	}
+
+  	.ventana-content img {
+		max-height: 250px;
+  	}
+
+  	.carro-content {
+		margin: 20% auto;
+		width: 95%;
+		padding: 15px;
+  	}
 }
+
 
 /*Tablet*/
 @media (min-width: 451px) and (max-width: 1024px) {
@@ -306,5 +413,21 @@ footer a {
 
 	.foto {
 		grid-template-columns: 1fr 1fr;
+	}
+
+	.ventana-content {
+		width: 85%;
+		height: 600px;
+		padding: 10px;
+	}
+
+  	.ventana-content img {
+		max-height: 400px;
+	}
+
+  	.carro-content {
+		margin: 15% auto;
+		width: 90%;
+		padding: 18px;
 	}
 }
