@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestor de Nóminas</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    select {
+      padding: 5px;
+      font-size: 14px;
+    }
+    button {
+      padding: 6px 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Gestor de Nóminas</h2>
+
+  <label for="mes">Filtrar por mes:</label>
+  <select id="mes">
+    <option value="">Todos</option>
+    <option value="Enero">Enero</option>
+    <option value="Febrero">Febrero</option>
+    <option value="Marzo">Marzo</option>
+    <option value="Abril">Abril</option>
+    <option value="Mayo">Mayo</option>
+    <option value="Junio">Junio</option>
+    <option value="Julio">Julio</option>
+    <option value="Agosto">Agosto</option>
+    <option value="Septiembre">Septiembre</option>
+    <option value="Octubre">Octubre</option>
+    <option value="Noviembre">Noviembre</option>
+    <option value="Diciembre">Diciembre</option>
+  </select>
+
+  <table id="tablaNominas">
+    <thead>
+      <tr>
+        <th>Empleado</th>
+        <th>Mes</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-mes="Enero">
+        <td>Paula Díaz Martín</td>
+        <td>Enero</td>
+        <td><button onclick="descargarNomina('Paula Díaz Martín', 'Enero')">Descargar PDF</button></td>
+      </tr>
+      <tr data-mes="Enero">
+        <td>Luis González Reyes</td>
+        <td>Enero</td>
+        <td><button onclick="descargarNomina('Luis González Reyes', 'Enero')">Descargar PDF</button></td>
+      </tr>
+      <tr data-mes="Enero">
+        <td>Sara Martín Pérez</td>
+        <td>Enero</td>
+        <td><button onclick="descargarNomina('Sara Martín Pérez', 'Enero')">Descargar PDF</button></td>
+      </tr>
+      <tr data-mes="Enero">
+        <td>David Fernández Lopez</td>
+        <td>Enero</td>
+        <td><button onclick="descargarNomina('David Fernández Lopez', 'Enero')">Descargar PDF</button></td>
+      </tr>
+      <tr data-mes="Enero">
+        <td>Raquel Sánchez González</td>
+        <td>Enero</td>
+        <td><button onclick="descargarNomina('Raquel Sánchez González', 'Enero')">Descargar PDF</button></td>
+      </tr>
+      <tr data-mes="Enero">
+        <td>Antonio	López Martínez</td>
+        <td>Enero</td>
+        <td><button onclick="descargarNomina('Antonio López Martínez', 'Enero')">Descargar PDF</button></td>
+      </tr>
+      <tr data-mes="Enero">
+        <td>Elena Ruiz García</td>
+        <td>Enero</td>
+        <td><button onclick="descargarNomina('Elena	Ruiz García', 'Enero')">Descargar PDF</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Contenido oculto para generar el PDF -->
+  <div id="contenidoPDF" style="display:none;">
+    <h3>Nómina</h3>
+    <p><strong>Empleado:</strong> <span id="nombreEmpleado"></span></p>
+    <p><strong>Mes:</strong> <span id="mesNomina"></span></p>
+    <p>Salario Base: 1500€</p>
+    <p>Descuentos: -200€</p>
+    <p><strong>Total Neto: 1300€</strong></p>
+  </div>
+
+  <script>
+    
+    // Filtrado por mes
+document.getElementById('mes').addEventListener('change', function () {
+  const mesSeleccionado = this.value;
+  const filas = document.querySelectorAll('#tablaNominas tbody tr');
+
+  filas.forEach(fila => {
+    // Mostrar todas las filas si "Todos" está seleccionado
+    if (mesSeleccionado === "" || fila.dataset.mes === mesSeleccionado) {
+      fila.style.display = '';
+    } else {
+      fila.style.display = 'none';
+    }
+  });
+});
+
+    // Generar y descargar el PDF
+function descargarNomina(nombre, mes) {
+  document.getElementById('nombreEmpleado').textContent = nombre;
+  document.getElementById('mesNomina').textContent = mes;
+
+  // Mostrar el contenido temporalmente
+  const contenido = document.getElementById('contenidoPDF');
+  contenido.style.display = 'block';
+
+  // Esperar un pequeño momento antes de generar el PDF
+  setTimeout(() => {
+    html2pdf()
+      .set({
+        margin: 1,
+        filename: `Nomina_${nombre}_${mes}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      })
+      .from(contenido)
+      .save()
+      .then(() => {
+        // Ocultar nuevamente el contenido tras generar el PDF
+        contenido.style.display = 'none';
+      });
+  }, 0); // Esperamos un pequeño retardo para asegurar el render
+}
+
+fetch('/api/nominas')
+  .then(response => response.json())
+  .then(data => {
+    renderTabla(data); // Usa los datos recibidos
+  });
+
+  </script>
+
+</body>
+</html>

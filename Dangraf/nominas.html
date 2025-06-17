@@ -37,7 +37,6 @@
     <option value="Cocinero">Cocinero</option>
   </select>
 </label>
-<button onclick="exportarExcel()">Exportar Excel</button>
 
 <table id="tablaNominas">
   <thead>
@@ -119,7 +118,9 @@ function renderTabla() {
         <td>${emp.incorporacion}</td>
         <td>${antiguedad}</td>
         <td>${salario}</td>
-        <td><button onclick="generarPDF(${JSON.stringify(emp).replace(/"/g, '&quot;')})">PDF</button></td>
+        <td><button onclick="exportarExcel()">Excel</button>
+            <button onclick="generarPDF(${JSON.stringify(emp).replace(/"/g, '&quot;')})">PDF</button>
+        </td>
       `;
       cuerpoTabla.appendChild(fila);
     });
