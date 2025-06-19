@@ -31,7 +31,7 @@ document.querySelectorAll('.detalles').forEach(boton => {
   // Carrito de compras
   let carrito = [];
 
-  function agregarAlCarrito(producto) {
+  function agregarCarrito(producto) {
     const existente = carrito.find(item => item.titulo === producto.titulo);
     if (existente) {
       existente.cantidad++;
@@ -48,7 +48,7 @@ document.querySelectorAll('.detalles').forEach(boton => {
       const precio = parseFloat(boton.getAttribute('data-precio'));
       const img = boton.getAttribute('data-img');
 
-      agregarAlCarrito({ titulo, precio, img });
+      agregarCarrito({ titulo, precio, img });
     });
   });
 
