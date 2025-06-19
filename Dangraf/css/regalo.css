@@ -14,11 +14,15 @@
 	font-size: 30px;
 }
 
-body {
+html, body {
 	background-color: #FFF6EE;
 	height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 header {
@@ -103,6 +107,7 @@ button:hover {
     padding: 20px;
     justify-content: center;
 	align-items: center;
+    min-height: 100%;
 }
     
 .producto { 
