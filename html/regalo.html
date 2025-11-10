@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Regalos personalizados</title>
+	<link rel="icon" href="../img/logo.png">
+	<link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/regalo.css">
+</head>
+
+<body>
+	<header>
+		<div class="banner">
+			<img src="../img/banner.png" alt="Banner">
+		</div>
+		
+		<div class="menu">
+			<nav>
+				<button class="hamburger" onclick="toggleMenu()">☰</button>
+				<div class="navegar">
+					<a href="../index.html">Inicio</a>
+					<a href="../html/print.html">Impresión</a>
+					<a href="../html/tienda.html">Tienda</a>
+					<a href="#" class="active">Regalos personalizados</a>
+					<a href="../html/contacto.html">Contacto</a>
+				</div>
+				<div class="ico">
+					<button type="button" class="icon"><img src="../img/carrito.png" alt="Cesta"></button>
+					<button type="button" class="icon" onclick="location.href='../html/login.html'"><img src="../img/usuario.png" alt="Usuario"></button>
+				</div>
+			</nav>
+		</div>
+	</header>
+	
+	<main>
+		<div class="productos">
+		  <div class="producto">
+			<h3>Taza personalizada</h3><hr>
+			<img src="../img/tazap.png" alt="Taza personalizada">
+			<p>Imprime tu frase favorita, fotos o el logo de tu empresa. Ideales para regalos corporativos o detalles únicos.</p>
+			<a href="../html/per_taza.html" class="btn">Personalizar</a>
+		  </div>
+		  <div class="producto">
+			<h3>Agenda 2025</h3><hr>
+			<img src="../img/agendap.png" alt="Agenda personalizada">
+			<p>Portada, contraportada, y páginas internas personalizadas. Ideal para regalos corporativos, escolares o personales.</p>
+			<a href="../html/per_agenda.html" class="btn">Personalizar</a>
+		  </div>
+		  <div class="producto">
+			<h3>Cuaderno personalizado</h3><hr>
+			<img src="../img/cuadernop.png" alt="Cuaderno">
+			<p>Portadas personalizadas para colegios, empresas o artistas. ¡Haz que cada cuaderno sea único!</p>
+			<a href="../html/per_cuaderno.html" class="btn">Personalizar</a>
+		  </div>
+		  <div class="producto">
+			<h3>Tote bag</h3><hr>
+			<img src="../img/bolsap.png" alt="Bolsa de tela">
+			<p>Alternativa ecológica y 100% personalizable para tus compras, eventos o promociones.</p>
+			<a href="../html/per_bolsa.html" class="btn">Personalizar</a>
+		  </div>
+		  <div class="producto">
+			<h3>Calendario personalizado</h3><hr>
+			<img src="../img/calendariop.png" alt="Calendario personalizado">
+			<p>Elige tus fotos favoritas para cada mes. Una excelente opción para empresas o regalos personales.</p>
+			<a href="#contacto" class="btn">Personalizar</a>
+		  </div>
+		</div>
+	</main>
+	
+	<footer>
+		<p>&copy; 2025 Dangraf | Todos los derechos reservados | <a href="../html/datos.html" target="_blank">Política de privacidad</a> | <a href="../html/aviso.html" target="_blank">Aviso legal</a></p>
+	</footer>
+
+<script>
+	function toggleMenu() {
+        document.querySelector('.navegar').classList.toggle('active');
+        document.querySelector('.ico').classList.toggle('active');
+    };
+</script>
+</body>
+</html>

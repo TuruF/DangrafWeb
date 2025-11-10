@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Registro</title>
+	<link rel="icon" href="../img/logo.png">
+	<link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/signup.css">
+</head>
+
+<body>
+	<header>
+		<div class="banner">
+			<img src="../img/banner.png" alt="Banner">
+		</div>
+		
+		<div class="menu">
+			<nav>
+				<button class="hamburger" onclick="toggleMenu()">☰</button>
+				<div class="navegar">
+					<a href="../index.html">Inicio</a>
+					<a href="../html/print.html">Impresión</a>
+					<a href="../html/tienda.html">Tienda</a>
+					<a href="../html/regalo.html">Regalos personalizados</a>
+					<a href="../html/contacto.html">Contacto</a>
+				</div>
+				<div class="ico">
+					<button type="button" class="icon"><img src="../img/carrito.png" alt="Cesta"></button>
+					<button type="button" class="active" onclick="location.href='../html/login.html'"><img src="../img/usuario.png" alt="Usuario"></button>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<main>
+		<div class="container">
+			<form>
+				<label for="nombre">Nombre:</label>
+        		<input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+                <label for="apellidos">Apellidos:</label>
+        		<input type="text" id="apellidos" name="apellidos" placeholder="Escribe tus apellidos" required>
+				<label for="email">Correo electrónico:</label>
+        		<input type="email" id="email" name="email" placeholder="Escribe tu correo" required>
+				<label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Escribe tu número de teléfono" required>
+                <label for="sexo">Sexo:</label>
+                <select required>
+                    <option></option>
+                    <option>Hombre</option>
+                    <option>Mujer</option>
+                    <option>Prefiero no decirlo</option>
+                </select>
+                <label for="fecha">Fecha de nacimiento:</label>
+                <input type="date" id="fecha" name="fecha" required>
+                <label for="pass">Contraseña:</label>
+                <input type="password" id="pass" name="pass" placeholder="Escribe una contraseña" required>
+				<button type="submit" class="send">Registrarme</button>
+			</form>
+		</div>
+	</main>
+		
+	<footer>
+		&copy; 2025 Dangraf | Todos los derechos reservados | <a href="../html/datos.html" target="_blank">Política de privacidad</a> | <a href="../html/aviso.html" target="_blank">Aviso legal</a>
+	</footer>
+
+<script>
+	function toggleMenu() {
+        document.querySelector('.navegar').classList.toggle('active');
+        document.querySelector('.ico').classList.toggle('active');
+    };
+</script>
+</body>
+</html>
