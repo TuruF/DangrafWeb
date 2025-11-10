@@ -75,7 +75,6 @@ nav a:hover {
 .active {
 	background-color: #0096C7;
 	border-radius: 5px;
-    pointer-events: none;
 }
 
 .navegar {
